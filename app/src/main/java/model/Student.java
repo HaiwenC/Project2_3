@@ -2,6 +2,8 @@ package model;
 
 import android.se.omapi.Session;
 
+import java.util.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -25,10 +27,16 @@ abstract class Student {
     List<Request> requestList;
     List<Session> sessionList;
 
+
+    Student(String sID, String e) {
+        studentID = sID;
+        email = e;
+    }
     /**
      * get calendar
      */
     public Calendar getCalendar() {
+
         return calendar;
     }
     /**
@@ -36,12 +44,14 @@ abstract class Student {
      * @param calendar: The new calendar to set
      */
     public void setCalendar(Calendar calendar) {
+
         this.calendar = calendar;
     }
     /**
      * get requestList
      */
     public List<Request> getRequestList() {
+
         return requestList;
     }
     /**
@@ -49,12 +59,14 @@ abstract class Student {
      * @param requestList: The new calendar to set
      */
     public void setRequestList(List<Request> requestList) {
+
         this.requestList = requestList;
     }
     /**
      * get sessionList
      */
     public List<Session> getSessionList() {
+
         return sessionList;
     }
     /**
@@ -62,12 +74,14 @@ abstract class Student {
      * @param sessionList: The new calendar to set
      */
     public void setSessionList(List<Session> sessionList) {
+
         this.sessionList = sessionList;
     }
     /**
      * get email
      */
     public String getEmail() {
+
         return email;
     }
     /**
@@ -75,12 +89,14 @@ abstract class Student {
      * @param email: The new calendar to set
      */
     public void setEmail(String email) {
+
         this.email = email;
     }
     /**
      * get studentID
      */
     public String getStudentID() {
+
         return studentID;
     }
     /**
@@ -88,6 +104,7 @@ abstract class Student {
      * @param studentID: The new calendar to set
      */
     public void setStudentID(String studentID) {
+
         this.studentID = studentID;
     }
 
