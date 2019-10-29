@@ -1,13 +1,13 @@
 package model;
 import java.util.*;
 public class Calendars {
-    List<Calendar> myCalendars;
+    Set<Calendar> myCalendars;
 
-    public List<Calendar> getMyCalendars() {
+    public Set<Calendar> getMyCalendars() {
         return myCalendars;
     }
 
-    public void setMyCalendars(List<Calendar> myCalendars) {
+    public void setMyCalendars(Set<Calendar> myCalendars) {
         this.myCalendars = myCalendars;
     }
 
@@ -17,5 +17,11 @@ public class Calendars {
 
     public void removeMyCalendars(Calendar calendar){
         myCalendars.remove(calendar);
+    }
+
+    public boolean checkAvalibleTime(Calendar calendar){
+        if (myCalendars.contains(calendar))
+            return true;
+        return false;
     }
 }
