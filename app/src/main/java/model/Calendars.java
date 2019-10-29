@@ -11,7 +11,7 @@ import java.util.*;
  * @author      Mingchen Zhang
  */
 public class Calendars {
-    Set<Calendar> myCalendars;
+    private Set<Calendar> myCalendars;
     /**
      * get myCalendars
      */
