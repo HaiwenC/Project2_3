@@ -1,13 +1,3 @@
 <resources>
-    <string name="app_name">ScheduleMe</string>
-    <string-array name="size">
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>10</item>
-        <item>50</item>
-        <item>100</item>
-    </string-array>
-    <string name="server_client_id">811116221902-gk4pflv1jp99ib7u0e12tvb6morqbg9k.apps.googleusercontent.com</string>
+    <string name="app_name">Project2_3</string>
 </resources>
