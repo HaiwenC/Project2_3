@@ -5,76 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/TextScheduleMe"
-        android:layout_width="88dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="TutorSC"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        app:title="TutorSC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/EditUsername"
-        android:layout_width="262dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:hint="username"
+    <ListView
+        android:id="@+id/listNotes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@null"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
+        app:layout_constraintBottom_toTopOf="@id/profile"></ListView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profile"
+        android:layout_width="165dp"
+        android:layout_height="47dp"
+        android:text="Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/Session"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Session"
+        android:layout_width="165dp"
+        android:layout_height="47dp"
+        android:text="Session"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextScheduleMe" />
-
-    <EditText
-        android:id="@+id/EditPassword"
-        android:layout_width="262dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:hint="password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditUsername" />
-
-    <Button
-        android:id="@+id/ButLogin"
-        android:layout_width="128dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/logbutton"
-        app:layout_constraintEnd_toStartOf="@+id/ButRegister"
-        app:layout_constraintStart_toStartOf="@+id/EditPassword"
-        app:layout_constraintTop_toBottomOf="@+id/EditPassword" />
-
-    <Button
-        android:id="@+id/ButRegister"
-        android:layout_width="128dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/regbutton"
-        app:layout_constraintEnd_toEndOf="@+id/EditPassword"
-        app:layout_constraintTop_toBottomOf="@+id/EditPassword" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="101dp"
-        android:layout_height="133dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/profile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

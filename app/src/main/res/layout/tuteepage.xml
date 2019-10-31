@@ -7,6 +7,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
+        app:title="TutorSC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -21,17 +22,26 @@
         android:layout_height="0dp"
         android:divider="@null"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:layout_constraintBottom_toTopOf="@id/Bottom_navigation"></ListView>
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/Bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@drawable/nav_item_color_state"
-        app:itemTextColor="@drawable/nav_item_color_state"
-        app:menu="@menu/bot_nav_menu"
+        app:layout_constraintBottom_toTopOf="@id/profile"></ListView>
 
-        ></android.support.design.widget.BottomNavigationView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Search"
+        android:layout_width="165dp"
+        android:layout_height="47dp"
+        android:text="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/TuteeSession"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/TuteeSession"
+        android:layout_width="165dp"
+        android:layout_height="47dp"
+        android:text="Session"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/Search" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
