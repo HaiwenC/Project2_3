@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "36702208635",
+    "firebase_url": "https://fall2019csci310gp-1d334.firebaseio.com",
+    "project_id": "fall2019csci310gp-1d334",
+    "storage_bucket": "fall2019csci310gp-1d334.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36702208635:android:63b50e0aad7465218198de",
+        "android_client_info": {
+          "package_name": "csci310.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36702208635-15n51sjbbjjr6fuak1h74mi0f59p17b3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSG0ceUOx78XdQnp00H-QQW4LvEP0vBtg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36702208635-15n51sjbbjjr6fuak1h74mi0f59p17b3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
