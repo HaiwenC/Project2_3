@@ -19,7 +19,7 @@
         android:layout_width="134dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RegEmail"
+        app:layout_constraintBaseline_toBaselineOf="@+id/TimePeriod"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
@@ -27,7 +27,7 @@
         android:layout_width="137dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RegFirstName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/WeekDay"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <TextView
-        android:id="@+id/RegLastName"
+        android:id="@+id/courseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@id/username" />
 
     <TextView
-        android:id="@+id/RegFirstName"
+        android:id="@+id/WeekDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -64,10 +64,10 @@
         android:text="First name"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/courseName" />
 
     <TextView
-        android:id="@+id/RegEmail"
+        android:id="@+id/TimePeriod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,7 +75,7 @@
         android:text="Email address"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/WeekDay" />
 
     <TextView
         android:id="@+id/RegPassword"
@@ -86,7 +86,7 @@
         android:text="Password"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/TimePeriod" />
 
     <TextView
         android:id="@+id/RegConfirm"
@@ -104,7 +104,7 @@
         android:layout_width="136dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RegLastName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/courseName"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
