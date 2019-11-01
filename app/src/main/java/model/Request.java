@@ -50,6 +50,8 @@ public class Request {
     public Tutor getTutor() {
         return tutor;
     }
+    public Tutee getTutee() {return tutee;}
+    public String getSubject(){return this.subject;}
 
 
 }
