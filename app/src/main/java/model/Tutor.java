@@ -20,6 +20,8 @@ class Tutor extends Student {
     private ArrayList<String> subject;
 
 
+
+    private ArrayList<Request> requestsReceived;
 //
 //    public void addTime(int week, int startTime){
 //        calendars.get(week).add(startTime);
@@ -110,6 +112,14 @@ class Tutor extends Student {
         // On the other hand, should this not be a string, but Review objects
         // because reviews will also hold session info like rating, student, subject, etc.
         return reviews;
+    }
+
+    public ArrayList<Request> getRequestsReceived() {
+        return requestsReceived;
+    }
+
+    public void setRequestsReceived(ArrayList<Request> requestsReceived) {
+        this.requestsReceived = requestsReceived;
     }
 
 }

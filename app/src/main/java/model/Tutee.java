@@ -20,10 +20,13 @@ class Tutee extends Student {
 
     }
 
+    //when the send request button is clicked on a request
     //creates and returns a request object
-    private Request createRequest(String timeBegin, String timeEnd, String tutorName, String className){
-        Request add = new Request(getName(), tutorName, className ,timeBegin, timeEnd);
-        return add;
+    private void createRequest(Request selectedRequest){
+//        Request add = new Request(getName(), tutorName, className ,timeBegin, timeEnd);
+        ArrayList<Request> updated = selectedRequest.getTutor().getRequestsReceived();
+        updated.add(selectedRequest);
+        selectedRequest.getTutor().setRequestsReceived(updated);
     }
 
     private void writeReview(String tutorName, String review, int rating){

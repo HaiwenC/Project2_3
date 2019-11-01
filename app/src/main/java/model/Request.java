@@ -24,4 +24,9 @@ public class Request {
         //TODO add session to database
     }
 
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+
 }
