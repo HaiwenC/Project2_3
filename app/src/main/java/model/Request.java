@@ -17,6 +17,9 @@ public class Request {
         this.status = "available";
     }
 
+    public Request(Tutee tutee, Tutor t, String s, Integer integer, Integer integer1, int i) {
+    }
+
     public void acceptRequest(String newStatus) {
         status = newStatus;
 //        Sections newSession = new Sections(timeBegin, timeEnd);

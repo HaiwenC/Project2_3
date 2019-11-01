@@ -43,7 +43,7 @@ class Tutor extends Student {
         sectionsTeaching = new ArrayList<Sections>();
         numRatings=0;
         ratingTotal=0;
-        reviews = "";
+//        reviews = "";
     }
 
     public double getRating(){

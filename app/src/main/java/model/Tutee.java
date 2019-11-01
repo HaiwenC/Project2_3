@@ -51,7 +51,7 @@ class Tutee extends Student {
                     && times.get(i) == beginTime)
                 {
                     //add to database
-                    results.add(new Request(this, t, subjects.get(i), days.get(i), times.get(i),i))
+                    results.add(new Request(this, t, subjects.get(i), days.get(i), times.get(i),i));
                 }
             }
         }
