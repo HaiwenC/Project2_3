@@ -4,11 +4,8 @@ import java.util.Calendar;
 
 class Tutee extends Student {
 
-<<<<<<< HEAD
     public Tutee(String studentID, String email, String fn, String ln) {
         super(studentID, email, fn, ln);
-=======
-    private name;
     private ArrayList<Sections> sectionsLearning;
 
     public Tutee(String studentID, String email) {
@@ -31,7 +28,6 @@ class Tutee extends Student {
         /*if tutor exists,
           add reviews and ratings to the reviews list of the corresponding tutor
          */
->>>>>>> 161e56cdd9900b24b6cf1767e91e8c3d6fbcfef7
 
     }
 }
