@@ -6,6 +6,7 @@ class Tutee extends Student {
 
     public Tutee(String studentID, String email, String fn, String ln) {
         super(studentID, email, fn, ln);
+    }
     private ArrayList<Sections> sectionsLearning;
 
     public Tutee(String studentID, String email) {
@@ -28,6 +29,5 @@ class Tutee extends Student {
         /*if tutor exists,
           add reviews and ratings to the reviews list of the corresponding tutor
          */
-
     }
 }

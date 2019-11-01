@@ -31,12 +31,9 @@ abstract class Student {
     List<Session> sessionList;
 
 
-<<<<<<< HEAD
     Student(String sID, String e, String fn, String ln) {
-=======
     Student(String sID, String e, String n) {
         name = n;
->>>>>>> 161e56cdd9900b24b6cf1767e91e8c3d6fbcfef7
         studentID = sID;
         email = e;
         fName = fn;
@@ -51,7 +48,6 @@ abstract class Student {
      * get calendar
      */
     public Calendar getCalendar() {
-
         return calendar;
     }
     /**
