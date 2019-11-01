@@ -50,10 +50,11 @@ public class Registration extends AppCompatActivity {
                                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
                                     if (user != null) {
+                                        //user.sendEmailVerification();
                                         // User is signed in
                                         // NOTE: this Activity should get onpen only when the user is not signed in, otherwise
                                         // the user will receive another verification email.
-                                        sendVerificationEmail();
+                                       sendVerificationEmail();
                                     } else {
                                         // User is signed out
 
