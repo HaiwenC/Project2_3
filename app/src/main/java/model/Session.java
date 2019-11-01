@@ -3,8 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Session {
-    Tutee tutee;
-    Tutor tutor;
+    private Tutee tutee;
+    private Tutor tutor;
 
     public Tutee getTutee() {
         return tutee;
@@ -22,7 +22,31 @@ public class Session {
         this.tutor = tutor;
     }
 
-    ArrayList<Integer> weekList = tutor.getDay();
-    ArrayList<Integer> timeList = tutor.getTime();
-    ArrayList<String> subjectList = tutor.getSubject();
+    private ArrayList<Integer> weekList = tutor.getDay();
+    private ArrayList<Integer> timeList = tutor.getTime();
+    private ArrayList<String> subjectList = tutor.getSubject();
+
+    public ArrayList<Integer> getTimeList() {
+        return timeList;
+    }
+
+    public ArrayList<Integer> getWeekList() {
+        return weekList;
+    }
+
+    public ArrayList<String> getSubjectList() {
+        return subjectList;
+    }
+
+    public void setSubjectList(ArrayList<String> subjectList) {
+        this.subjectList = subjectList;
+    }
+
+    public void setTimeList(ArrayList<Integer> timeList) {
+        this.timeList = timeList;
+    }
+
+    public void setWeekList(ArrayList<Integer> weekList) {
+        this.weekList = weekList;
+    }
 }
