@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.*;
 // @Philip since we know what all known sections will be in our dropdown,
 // let's use enum to keep a range of constants and just add/delete from this list
-enum Session {
-    CSCI109, CSCI102, CSCI103, CSCI104, CSCI201, CSCI270,CSCI310,CSCI356, CSCI350, CSCI360,
-    EE109, EE250, EE364;
-}
+//enum Session {
+//    CSCI109, CSCI102, CSCI103, CSCI104, CSCI201, CSCI270,CSCI310,CSCI356, CSCI350, CSCI360,
+//    EE109, EE250, EE364;
+//}
 
 
 class Tutor extends Student {

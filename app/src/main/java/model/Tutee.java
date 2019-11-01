@@ -12,7 +12,7 @@ class Tutee extends Student {
 
     public Tutee(String studentID, String email, String name, String username) {
         super(studentID, email, name, username);
-        sectionsLearning = new ArrayList<Sections>();
+        sectionsLearning = new ArrayList<Session>();
         lastSearch_subject = "";
         lastSearch_day = -1;
         lastSearch_time = -1;
