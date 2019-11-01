@@ -19,6 +19,32 @@ class Tutor extends Student {
     private ArrayList<Integer> time;
     private ArrayList<String> subject;
 
+
+//
+//    public void addTime(int week, int startTime){
+//        calendars.get(week).add(startTime);
+//    }
+//
+//    public void removeTime(int week, int startTime){
+//        calendars.get(week).remove(startTime);
+//    }
+//
+//    public void editTime(int week, int oldTime, int newTime){
+//        calendars.get(week).remove(oldTime);
+//        calendars.get(week).remove(newTime);
+//    }
+
+    //private double rating;  // @Philip won't this variable just be an average that's computed from DB?
+                            // so we shouldn't necessarily keep it as a local private variable
+    //private String reviews; // same as above, what reviews are we keeping in class?
+                            // can't they just be stored/retrieved from DB?
+
+    public Tutor(String studentID, String email, String fname, String lname) {
+        super(studentID, email, fname, lname);
+        sectionsTeaching = new ArrayList<Sections>();
+    }
+
+
     public ArrayList<Integer> getDay() {
         return week;
     }
@@ -56,29 +82,6 @@ class Tutor extends Student {
     }
 
 
-//
-//    public void addTime(int week, int startTime){
-//        calendars.get(week).add(startTime);
-//    }
-//
-//    public void removeTime(int week, int startTime){
-//        calendars.get(week).remove(startTime);
-//    }
-//
-//    public void editTime(int week, int oldTime, int newTime){
-//        calendars.get(week).remove(oldTime);
-//        calendars.get(week).remove(newTime);
-//    }
-
-    //private double rating;  // @Philip won't this variable just be an average that's computed from DB?
-                            // so we shouldn't necessarily keep it as a local private variable
-    //private String reviews; // same as above, what reviews are we keeping in class?
-                            // can't they just be stored/retrieved from DB?
-
-    public Tutor(String studentID, String email, String fname, String lname) {
-        super(studentID, email, fname, lname);
-        sectionsTeaching = new ArrayList<Sections>();
-    }
     public boolean addSections(Sections s) {
         if (sectionsTeaching.contains(s)) return false;
         else sectionsTeaching.add(s);
