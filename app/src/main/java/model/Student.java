@@ -5,6 +5,8 @@ import android.se.omapi.Session;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <h3>The Student class.</h3>
@@ -22,22 +24,19 @@ import java.util.Calendar;
  */
 abstract class Student {
     private String studentID;
-    private String fName;
-    private String lName;
     private String email;
     private String name;
+    private String username;
     private Calendar calendar;
     List<Request> requestList;
     List<Session> sessionList;
 
 
-    Student(String sID, String e, String fn, String ln) {
-    Student(String sID, String e, String n) {
+    Student(String sID, String e, String n, String un) {
         name = n;
         studentID = sID;
         email = e;
-        fName = fn;
-        lName = ln;
+        username = un;
     }
 
     public String getName(){

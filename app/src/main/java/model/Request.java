@@ -19,7 +19,7 @@ public class Request {
 
     public void acceptRequest() {
         accepted = true;
-        Sections newSession = new Sections(timeBegin, timeEnd);
+//        Sections newSession = new Sections(timeBegin, timeEnd);
 
         //TODO add session to database
     }

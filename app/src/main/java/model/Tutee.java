@@ -3,19 +3,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 class Tutee extends Student {
-
-    public Tutee(String studentID, String email, String fn, String ln) {
-        super(studentID, email, fn, ln);
-    }
     private ArrayList<Sections> sectionsLearning;
 
-    public Tutee(String studentID, String email) {
-        super(studentID, email);
+    public Tutee(String studentID, String email, String name, String username) {
+        super(studentID, email, name, username);
+        sectionsLearning = new ArrayList<Sections>();
     }
+
 
     //pulls data from database, search the list by time, and return a list of matching results
     private ArrayList<Calendar> SearchTutor(String timeBegin, String timeEnd){
         //TODO pull tutor's availability
+        return null;
 
     }
 
