@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "36702208635",
-    "firebase_url": "https://fall2019csci310gp-1d334.firebaseio.com",
-    "project_id": "fall2019csci310gp-1d334",
-    "storage_bucket": "fall2019csci310gp-1d334.appspot.com"
+    "project_number": "1066301914922",
+    "firebase_url": "https://tutorsearcher-84793.firebaseio.com",
+    "project_id": "tutorsearcher-84793",
+    "storage_bucket": "tutorsearcher-84793.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:36702208635:android:63b50e0aad7465218198de",
+        "mobilesdk_app_id": "1:1066301914922:android:cd1953dcb8cd157573a853",
         "android_client_info": {
           "package_name": "csci310.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "36702208635-15n51sjbbjjr6fuak1h74mi0f59p17b3.apps.googleusercontent.com",
+          "client_id": "1066301914922-kl72das319ofqusl2bhk68256qehmsi5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCSG0ceUOx78XdQnp00H-QQW4LvEP0vBtg"
+          "current_key": "AIzaSyChWrwJ6mSzaokcGA_5J9tGtAP1saNRj9g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "36702208635-15n51sjbbjjr6fuak1h74mi0f59p17b3.apps.googleusercontent.com",
+              "client_id": "1066301914922-kl72das319ofqusl2bhk68256qehmsi5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
