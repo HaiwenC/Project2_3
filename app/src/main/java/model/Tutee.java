@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-class Tutee extends Student {
+public class Tutee extends Student {
     private ArrayList<Session> sectionsLearning;
     private String lastSearch_subject;
     private int lastSearch_day;

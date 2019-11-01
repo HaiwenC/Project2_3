@@ -11,7 +11,7 @@ import java.util.*;
 //}
 
 
-class Tutor extends Student {
+public class Tutor extends Student {
 
     private ArrayList<Session> sectionsTeaching;
 
