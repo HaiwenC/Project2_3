@@ -5,6 +5,26 @@ import java.util.ArrayList;
 public class Session {
     private Tutee tutee;
     private Tutor tutor;
+    private String subject;
+    private int dayOfWeek;
+    private int time;
+
+
+    private ArrayList<Integer> weekList;
+    private ArrayList<Integer> timeList;
+    private ArrayList<String> subjectList;
+
+    public Session(Tutor tutor, Tutee tutee, String subject, int dayOfWeek, int time){
+        this.tutee = tutee;
+        this.tutor = tutor;
+        this.subject = subject;
+        this.dayOfWeek = dayOfWeek;
+        this.time = time;
+
+        weekList = tutor.getDay();
+        timeList = tutor.getTime();
+        subjectList = tutor.getSubject();
+    }
 
     public Tutee getTutee() {
         return tutee;
@@ -22,9 +42,6 @@ public class Session {
         this.tutor = tutor;
     }
 
-    private ArrayList<Integer> weekList = tutor.getDay();
-    private ArrayList<Integer> timeList = tutor.getTime();
-    private ArrayList<String> subjectList = tutor.getSubject();
 
     public ArrayList<Integer> getTimeList() {
         return timeList;
