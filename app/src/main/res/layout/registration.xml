@@ -27,7 +27,7 @@
         android:layout_width="137dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/WeekDay"
+        app:layout_constraintBaseline_toBaselineOf="@+id/DayTime"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@id/username" />
 
     <TextView
-        android:id="@+id/WeekDay"
+        android:id="@+id/DayTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,7 +75,7 @@
         android:text="Email address"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WeekDay" />
+        app:layout_constraintTop_toBottomOf="@+id/DayTime" />
 
     <TextView
         android:id="@+id/RegPassword"
