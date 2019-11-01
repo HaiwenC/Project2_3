@@ -22,12 +22,12 @@
         android:layout_height="0dp"
         android:divider="@null"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:layout_constraintBottom_toTopOf="@id/profile"></ListView>
+        app:layout_constraintBottom_toTopOf="@id/ProfileButton"></ListView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Search"
-        android:layout_width="165dp"
-        android:layout_height="47dp"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
         android:text="Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/TuteeSession"
@@ -35,13 +35,20 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/TuteeSession"
-        android:layout_width="165dp"
-        android:layout_height="47dp"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
         android:text="Session"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/Search" />
+
+    <Button
+        android:id="@+id/ProfileButton"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:text="Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TuteeSession" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

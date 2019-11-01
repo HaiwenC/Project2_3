@@ -9,7 +9,7 @@
         android:id="@+id/CreatePassword"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:inputType="textPassword"
         app:layout_constraintBaseline_toBaselineOf="@+id/RegPassword"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -18,16 +18,8 @@
         android:id="@+id/CreateEmail"
         android:layout_width="134dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/TimePeriod"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/CreateFirstName"
-        android:layout_width="137dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/DayTime"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -48,34 +40,23 @@
         android:id="@+id/courseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Last name"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
+        android:text="Name"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/username" />
 
     <TextView
-        android:id="@+id/DayTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="First name"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseName" />
-
-    <TextView
         android:id="@+id/TimePeriod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="Email address"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DayTime" />
+        app:layout_constraintTop_toBottomOf="@+id/courseName" />
 
     <TextView
         android:id="@+id/RegPassword"
@@ -111,7 +92,7 @@
         android:id="@+id/CreateConfirm"
         android:layout_width="137dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:inputType="textPassword"
         app:layout_constraintBaseline_toBaselineOf="@+id/RegConfirm"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -133,13 +114,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="Username"
         android:textSize="20sp"
