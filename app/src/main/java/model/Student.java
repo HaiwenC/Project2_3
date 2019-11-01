@@ -128,8 +128,8 @@ abstract class Student {
          */
         public boolean validateEmail(String email){
             //Regex email verification
-            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                    "[a-zA-Z0-9_+&*-]+)*@" +
+            String emailRegex = "^[a-zA-Z0-9_]+(?:\\."+
+                    "[a-zA-Z0-9_]+)*@" +
                     "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                     "A-Z]{2,7}$";
 
