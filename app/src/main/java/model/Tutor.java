@@ -19,7 +19,43 @@ class Tutor extends Student {
     private ArrayList<Integer> time;
     private ArrayList<String> subject;
 
-    public ArrayList<Integer> getWeek() {
+    private ArrayList<Request> requestsReceived;
+//
+//    public void addTime(int week, int startTime){
+//        calendars.get(week).add(startTime);
+//    }
+//
+//    public void removeTime(int week, int startTime){
+//        calendars.get(week).remove(startTime);
+//    }
+//
+//    public void editTime(int week, int oldTime, int newTime){
+//        calendars.get(week).remove(oldTime);
+//        calendars.get(week).remove(newTime);
+//    }
+
+    private double ratingTotal;
+    private int numRatings;
+    private ArrayList<String> reviews;
+
+    public Tutor(String studentID, String email, String name, String username) {
+        super(studentID, email, name, username);
+        sectionsTeaching = new ArrayList<Sections>();
+        numRatings=0;
+        ratingTotal=0;
+//        reviews = "";
+    }
+
+    public double getRating(){
+        return ratingTotal/numRatings;
+    }
+
+    public void addRating(int rate){
+        ratingTotal += rate;
+        numRatings++;
+    }
+
+    public ArrayList<Integer> getDay() {
         return week;
     }
 
@@ -56,29 +92,6 @@ class Tutor extends Student {
     }
 
 
-//
-//    public void addTime(int week, int startTime){
-//        calendars.get(week).add(startTime);
-//    }
-//
-//    public void removeTime(int week, int startTime){
-//        calendars.get(week).remove(startTime);
-//    }
-//
-//    public void editTime(int week, int oldTime, int newTime){
-//        calendars.get(week).remove(oldTime);
-//        calendars.get(week).remove(newTime);
-//    }
-
-    //private double rating;  // @Philip won't this variable just be an average that's computed from DB?
-                            // so we shouldn't necessarily keep it as a local private variable
-    //private String reviews; // same as above, what reviews are we keeping in class?
-                            // can't they just be stored/retrieved from DB?
-
-    public Tutor(String studentID, String email, String fname, String lname) {
-        super(studentID, email, fname, lname);
-        sectionsTeaching = new ArrayList<Sections>();
-    }
     public boolean addSections(Sections s) {
         if (sectionsTeaching.contains(s)) return false;
         else sectionsTeaching.add(s);
@@ -89,24 +102,24 @@ class Tutor extends Student {
         // returns true if removed, false otherwise
     }
 
-
-    public double getRating() {
-
-        double rating = 0;
-        // perform sql command AVG to retrieve
-        // the average rating of this tutor from db
-        // if rating does not exist, should we return a flag that will display N/A?
-        return rating;
+    public void addReview(String newReview){
+        reviews.add(newReview);
     }
 
-
-    public List<String> getReviews() {
-        ArrayList<String> reviews = new ArrayList<String>();
+    public ArrayList<String> getReviews() {
         // perform sql command to retrieve all reviews into resultset
         // and store that list in result set to this reviews arraylist
         // On the other hand, should this not be a string, but Review objects
         // because reviews will also hold session info like rating, student, subject, etc.
         return reviews;
+    }
+
+    public ArrayList<Request> getRequestsReceived() {
+        return requestsReceived;
+    }
+
+    public void setRequestsReceived(ArrayList<Request> requestsReceived) {
+        this.requestsReceived = requestsReceived;
     }
 
 }

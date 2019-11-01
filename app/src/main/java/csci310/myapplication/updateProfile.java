@@ -17,7 +17,7 @@ public class updateProfile extends AppCompatActivity {
     private CalendarView CV;
     private int day = 1;
     private TextView DayOfWeek;
-    private String[] week = new String[]{"MON", "TUE", "WED", "THUR", "FRI"};
+    private String[] week = new String[]{"SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,11 +31,11 @@ public class updateProfile extends AppCompatActivity {
                 if (DayOfWeek == null) {
                     DayOfWeek = findViewById(R.id.textView3);
                 }
-                Calendar selected = Calendar.getInstance();
-                selected.setTimeInMillis(calendarView.getDate());
-                day = selected.get(Calendar.DAY_OF_WEEK);
-                Log.d("day", String.valueOf(selected.getTime().toString()));
-                DayOfWeek.setText(week[day-1]);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(i, i1, i2);
+                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+                Log.d("day output", String.valueOf(dayOfWeek));
+                DayOfWeek.setText(week[dayOfWeek-1]);
             }
         });
     }

@@ -1,27 +1,35 @@
 package model;
 
 public class Request {
-    private String tutee_name;
-    private String tutor_name;
+    private Tutee tutee;
+    private Tutor tutor;
     private String subject;
-    private String timeBegin;
-    private String timeEnd;
-    private boolean accepted;
+    private int timeBegin;
+    private int index;
+    private String status;
 
-    public Request(String tutee, String tutor, String className, String begin, String end){
-        tutee_name = tutee;
-        tutor_name = tutor;
-        subject = className;
-        timeBegin = begin;
-        timeEnd = end;
-        accepted = false;
+    public Request(Tutee tutee, Tutor tutor, String className, int begin, int ind){
+        this.tutee = tutee;
+        this.tutor = tutor;
+        this.subject = className;
+        this.timeBegin = begin;
+        this.index = ind;
+        this.status = "available";
     }
 
-    public void acceptRequest() {
-        accepted = true;
+    public Request(Tutee tutee, Tutor t, String s, Integer integer, Integer integer1, int i) {
+    }
+
+    public void acceptRequest(String newStatus) {
+        status = newStatus;
 //        Sections newSession = new Sections(timeBegin, timeEnd);
 
         //TODO add session to database
     }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
 
 }
