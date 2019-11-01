@@ -25,17 +25,28 @@ abstract class Student {
     private String fName;
     private String lName;
     private String email;
+    private String name;
     private Calendar calendar;
     List<Request> requestList;
     List<Session> sessionList;
 
 
+<<<<<<< HEAD
     Student(String sID, String e, String fn, String ln) {
+=======
+    Student(String sID, String e, String n) {
+        name = n;
+>>>>>>> 161e56cdd9900b24b6cf1767e91e8c3d6fbcfef7
         studentID = sID;
         email = e;
         fName = fn;
         lName = ln;
     }
+
+    public String getName(){
+        return name;
+    }
+
     /**
      * get calendar
      */
