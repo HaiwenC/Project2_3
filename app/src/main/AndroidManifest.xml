@@ -15,12 +15,12 @@
         <service
             android:name=".MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
+            <intent-filter android:enabled="false" android:exported="false">
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
-            android:enabled="false"
-            android:exported="false">
+
+
 
         </service>
 
