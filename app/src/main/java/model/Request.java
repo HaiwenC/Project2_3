@@ -22,10 +22,13 @@ public class Request {
 
     public void acceptRequest(String newStatus) {
         status = newStatus;
-//        Sections newSession = new Sections(timeBegin, timeEnd);
-
+//        Session newSession = new Sections(timeBegin, timeEnd);
+        Session newSession;
+        tutee.addSession(newSession);
+        tutor.addSections(newSession);
         //TODO add session to database
     }
+
 
     public Tutor getTutor() {
         return tutor;

@@ -5,11 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Tutee extends Student {
-    private ArrayList<Sections> sectionsLearning;
+    private ArrayList<Session> sectionsLearning;
+    private String lastSearch_subject;
+    private int lastSearch_day;
+    private int lastSearch_time;
 
     public Tutee(String studentID, String email, String name, String username) {
         super(studentID, email, name, username);
         sectionsLearning = new ArrayList<Sections>();
+        lastSearch_subject = "";
+        lastSearch_day = -1;
+        lastSearch_time = -1;
     }
 
 
@@ -18,6 +24,10 @@ class Tutee extends Student {
         //TODO pull tutor's availability
         return null;
 
+    }
+
+    public void addSession(Session newClass){
+        sectionsLearning.add(newClass);
     }
 
     //when the send request button is clicked on a request
@@ -39,6 +49,10 @@ class Tutee extends Student {
     //tutee can only search one hour
     public ArrayList<Request> getResults(String subject, int day, int beginTime, ArrayList<Tutor> tutors){
 
+        if (lastSearch_subject.equals("") || lastSearch_day == -1 || lastSearch_time == -1)
+        {
+            return null;
+        }
         ArrayList<Request> results = new ArrayList<Request>();
         for(Tutor t : tutors){
             ArrayList<String> subjects = t.getSubject();
@@ -55,6 +69,10 @@ class Tutee extends Student {
                 }
             }
         }
+
+        lastSearch_subject = subject;
+        lastSearch_day = day;
+        lastSearch_time = beginTime;
         return results;
     }
 }

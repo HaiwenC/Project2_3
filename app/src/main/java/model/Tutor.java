@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.*;
 // @Philip since we know what all known sections will be in our dropdown,
 // let's use enum to keep a range of constants and just add/delete from this list
-enum Sections {
+enum Session {
     CSCI109, CSCI102, CSCI103, CSCI104, CSCI201, CSCI270,CSCI310,CSCI356, CSCI350, CSCI360,
     EE109, EE250, EE364;
 }
@@ -13,7 +13,7 @@ enum Sections {
 
 class Tutor extends Student {
 
-    private ArrayList<Sections> sectionsTeaching;
+    private ArrayList<Session> sectionsTeaching;
 
     private ArrayList<Integer> week;
     private ArrayList<Integer> time;
@@ -40,7 +40,7 @@ class Tutor extends Student {
 
     public Tutor(String studentID, String email, String name, String username) {
         super(studentID, email, name, username);
-        sectionsTeaching = new ArrayList<Sections>();
+        sectionsTeaching = new ArrayList<Session>();
         numRatings=0;
         ratingTotal=0;
 //        reviews = "";
@@ -92,12 +92,12 @@ class Tutor extends Student {
     }
 
 
-    public boolean addSections(Sections s) {
+    public boolean addSections(Session s) {
         if (sectionsTeaching.contains(s)) return false;
         else sectionsTeaching.add(s);
         return true;
     }
-    public boolean removeSections(Sections s) {
+    public boolean removeSections(Session s) {
        return sectionsTeaching.remove(s);
         // returns true if removed, false otherwise
     }
