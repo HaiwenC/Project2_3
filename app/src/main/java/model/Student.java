@@ -27,7 +27,7 @@ abstract class Student {
     private String email;
     private String name;
     private String username;
-    private Calendar calendar;
+//    private Calendar calendar;
     List<Request> requestList;
     List<Session> sessionList;
 
@@ -46,17 +46,17 @@ abstract class Student {
     /**
      * get calendar
      */
-    public Calendar getCalendar() {
-        return calendar;
-    }
+//    public Calendar getCalendar() {
+//        return calendar;
+//    }
     /**
      * set calendar
      * @param calendar: The new calendar to set
      */
-    public void setCalendar(Calendar calendar) {
-
-        this.calendar = calendar;
-    }
+//    public void setCalendar(Calendar calendar) {
+//
+//        this.calendar = calendar;
+//    }
     /**
      * get requestList
      */
