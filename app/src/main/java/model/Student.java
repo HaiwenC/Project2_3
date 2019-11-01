@@ -135,6 +135,10 @@ abstract class Student {
             return pat.matcher(email).matches();
         }
 
+        public boolean vaildatePassword(String password){
+            return password.length()>8;
+        }
+
 
 
 }
