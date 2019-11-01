@@ -19,8 +19,6 @@ class Tutor extends Student {
     private ArrayList<Integer> time;
     private ArrayList<String> subject;
 
-
-
     private ArrayList<Request> requestsReceived;
 //
 //    public void addTime(int week, int startTime){
@@ -36,16 +34,26 @@ class Tutor extends Student {
 //        calendars.get(week).remove(newTime);
 //    }
 
-    //private double rating;  // @Philip won't this variable just be an average that's computed from DB?
-                            // so we shouldn't necessarily keep it as a local private variable
-    //private String reviews; // same as above, what reviews are we keeping in class?
-                            // can't they just be stored/retrieved from DB?
+    private double ratingTotal;
+    private int numRatings;
+    private ArrayList<String> reviews;
 
-    public Tutor(String studentID, String email, String fname, String lname) {
-        super(studentID, email, fname, lname);
+    public Tutor(String studentID, String email, String name, String username) {
+        super(studentID, email, name, username);
         sectionsTeaching = new ArrayList<Sections>();
+        numRatings=0;
+        ratingTotal=0;
+        reviews = "";
     }
 
+    public double getRating(){
+        return ratingTotal/numRatings;
+    }
+
+    public void addRating(int rate){
+        ratingTotal += rate;
+        numRatings++;
+    }
 
     public ArrayList<Integer> getDay() {
         return week;
@@ -94,19 +102,11 @@ class Tutor extends Student {
         // returns true if removed, false otherwise
     }
 
-
-    public double getRating() {
-
-        double rating = 0;
-        // perform sql command AVG to retrieve
-        // the average rating of this tutor from db
-        // if rating does not exist, should we return a flag that will display N/A?
-        return rating;
+    public void addReview(String newReview){
+        reviews.add(newReview);
     }
 
-
-    public List<String> getReviews() {
-        ArrayList<String> reviews = new ArrayList<String>();
+    public ArrayList<String> getReviews() {
         // perform sql command to retrieve all reviews into resultset
         // and store that list in result set to this reviews arraylist
         // On the other hand, should this not be a string, but Review objects
