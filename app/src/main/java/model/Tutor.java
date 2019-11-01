@@ -20,6 +20,7 @@ class Tutor extends Student {
     private ArrayList<String> subject;
 
     private ArrayList<Request> requestsReceived;
+
 //
 //    public void addTime(int week, int startTime){
 //        calendars.get(week).add(startTime);
@@ -45,6 +46,7 @@ class Tutor extends Student {
         ratingTotal=0;
 //        reviews = "";
     }
+
 
     public double getRating(){
         return ratingTotal/numRatings;
@@ -80,6 +82,7 @@ class Tutor extends Student {
     }
 
     public void addObject(int W, int T, String S){
+
         week.add(W);
         time.add(T);
         subject.add(S);
@@ -92,9 +95,17 @@ class Tutor extends Student {
     }
 
 
-    public boolean addSections(Session s) {
-        if (sectionsTeaching.contains(s)) return false;
-        else sectionsTeaching.add(s);
+    public boolean addSections(Session s, int time, int week) {
+        if (sectionsTeaching.contains(s)) {return false;}
+        else {
+            for (int i = 0 ; i < requestsReceived.size(); i++ ){
+                if(requestsReceived.get(i).getDayOfWeek() == week && requestsReceived.get(i).getTime() == time) {
+                    requestsReceived.get(i).rejectRequest();
+                    removeObject(i);
+                }
+            }
+            sectionsTeaching.add(s);
+        }
         return true;
     }
     public boolean removeSections(Session s) {
