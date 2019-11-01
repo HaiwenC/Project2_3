@@ -18,8 +18,8 @@ class Tutor extends Student {
     //private String reviews; // same as above, what reviews are we keeping in class?
                             // can't they just be stored/retrieved from DB?
 
-    public Tutor(String studentID, String email) {
-        super(studentID, email);
+    public Tutor(String studentID, String email, String fname, String lname) {
+        super(studentID, email, fname, lname);
         sectionsTeaching = new ArrayList<Sections>();
     }
     public boolean addSections(Sections s) {

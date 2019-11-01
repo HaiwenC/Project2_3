@@ -22,15 +22,19 @@ import java.util.Calendar;
  */
 abstract class Student {
     private String studentID;
+    private String fName;
+    private String lName;
     private String email;
     private Calendar calendar;
     List<Request> requestList;
     List<Session> sessionList;
 
 
-    Student(String sID, String e) {
+    Student(String sID, String e, String fn, String ln) {
         studentID = sID;
         email = e;
+        fName = fn;
+        lName = ln;
     }
     /**
      * get calendar
