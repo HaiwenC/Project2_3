@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="csci310.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+            android:enabled="false"
+            android:exported="false">
+
+        </service>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,14 +31,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TutorHome"></activity>
-        <activity android:name=".TuteeHome"></activity>
-        <activity android:name=".Registration"></activity>
-        <activity android:name=".TuteeProfile"></activity>
-        <activity android:name=".TutorProfile"></activity>
-        <activity android:name=".updateProfile"></activity>
-        <activity android:name=".SearchPage"></activity>
-        <activity android:name=".SessionHistory"></activity>
+        <activity android:name=".TutorHome" />
+        <activity android:name=".TuteeHome" />
+        <activity android:name=".Registration" />
+        <activity android:name=".TuteeProfile" />
+        <activity android:name=".TutorProfile" />
+        <activity android:name=".updateProfile" />
+        <activity android:name=".SearchPage" />
+        <activity android:name=".SessionHistory" />
     </application>
 
 </manifest>
