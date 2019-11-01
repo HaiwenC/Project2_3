@@ -26,13 +26,13 @@ import model.Tutor;
 public class TutorHome extends AppCompatActivity {
     private Button profile;
     private RecyclerView list;
-    private RequestAdapter adapter;
+    //private MyRecyclerViewAdapter adapter;
     public static List<Request> groups = new ArrayList<Request>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         list = findViewById(R.id.listNotes);
-        Log.d("debug listview", list.toString());
+        //Log.d("debug listview", list.toString());
         groups.add(new Request(new Tutee("1", "1", "1","1"),
                 new Tutor("1", "1", "!", "1"), "csci109", 1 ,8, 9));
         setContentView(R.layout.tutorpage);
@@ -44,14 +44,13 @@ public class TutorHome extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        adapter = new RequestAdapter(getApplicationContext(), 0, groups);
-        Log.d("debug adapter", adapter.toString());
-        list.setAdapter(adapter);
+        //adapter = new MyRecyclerViewAdapter(getApplicationContext(), groups);
+        //Log.d("debug adapter", adapter.toString());
+        //list.setAdapter(adapter);
     }
-    private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>{
+    /*private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>{
         private List<Request> mData;
         private LayoutInflater mInflater;
-        private ItemClickListener mClickListener;
 
         // data is passed into the constructor
         MyRecyclerViewAdapter(Context context, List<Request> data) {
@@ -89,5 +88,5 @@ public class TutorHome extends AppCompatActivity {
                 if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
             }
         }
-    }
+    }*/
 }
