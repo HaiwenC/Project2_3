@@ -123,5 +123,21 @@ abstract class Student {
         this.studentID = studentID;
     }
 
+        /**
+         * validate email
+         */
+        public boolean validateEmail(String email){
+            //Regex email verification
+            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                    "[a-zA-Z0-9_+&*-]+)*@" +
+                    "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                    "A-Z]{2,7}$";
+
+            Pattern pat = Pattern.compile(emailRegex);
+            String[] data = email.split("@", 2);
+            if (data.length != 2 || !data[1].equalsIgnoreCase("usc.edu") || email == null)
+                return false;
+            return pat.matcher(email).matches();
+        }
 
 }
