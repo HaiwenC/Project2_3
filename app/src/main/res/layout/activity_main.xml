@@ -53,8 +53,9 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/logbutton"
         app:layout_constraintEnd_toStartOf="@+id/ButRegister"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/EditPassword"
-        app:layout_constraintTop_toBottomOf="@+id/EditPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button
         android:id="@+id/ButRegister"
@@ -63,7 +64,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/regbutton"
         app:layout_constraintEnd_toEndOf="@+id/EditPassword"
-        app:layout_constraintTop_toBottomOf="@+id/EditPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -78,4 +79,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditPassword">
+
+        <RadioButton
+            android:id="@+id/radioTutee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:checked="true"
+            android:text="Tutee" />
+
+        <RadioButton
+            android:id="@+id/radioTutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tutor" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
