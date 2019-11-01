@@ -5,29 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        app:title="TutorSC"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listNotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:divider="@null"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/profile"></ListView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/profile"
         android:layout_width="165dp"
-        android:layout_height="47dp"
+        android:layout_height="45dp"
         android:text="Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/Session"
@@ -36,7 +26,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Session"
         android:layout_width="165dp"
-        android:layout_height="47dp"
+        android:layout_height="45dp"
         android:text="Session"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

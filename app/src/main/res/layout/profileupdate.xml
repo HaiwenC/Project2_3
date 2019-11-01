@@ -5,23 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <androidx.appcompat.widget.Toolbar
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        />
 
     <TextView
         android:id="@+id/courseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="CourseName"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/DayTime"
@@ -84,23 +78,25 @@
     <EditText
         android:id="@+id/EditCourseName"
         android:layout_width="230dp"
-        android:layout_height="32dp"
+        android:layout_height="28dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         app:layout_constraintStart_toEndOf="@+id/courseName"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+        app:layout_constraintTop_toTopOf="@+id/courseName" />
 
     <EditText
         android:id="@+id/EditName"
         android:layout_width="243dp"
-        android:layout_height="32dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/EditCourseName"
         app:layout_constraintTop_toBottomOf="@+id/EditCourseName" />
 
     <EditText
         android:id="@+id/EditEmailAddress"
         android:layout_width="243dp"
-        android:layout_height="32dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/EditCourseName"
         app:layout_constraintTop_toBottomOf="@+id/EditName" />
 
