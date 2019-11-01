@@ -1,5 +1,5 @@
 // create an instance of firebase auth
-private FirebaseAuth mAuth;
+/*private FirebaseAuth mAuth;
 private void sendVerificationEmail()
         {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -66,4 +66,4 @@ public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
         }
         }
-        };
+        };*/
