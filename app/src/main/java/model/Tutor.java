@@ -12,7 +12,64 @@ enum Sections {
 
 
 class Tutor extends Student {
+
     private ArrayList<Sections> sectionsTeaching;
+
+    private ArrayList<Integer> week;
+    private ArrayList<Integer> time;
+    private ArrayList<String> subject;
+
+    public ArrayList<Integer> getWeek() {
+        return week;
+    }
+
+    public ArrayList<Integer> getTime() {
+        return time;
+    }
+
+    public ArrayList<String> getSubject() {
+        return subject;
+    }
+
+    public void setTime(ArrayList<Integer> time) {
+        this.time = time;
+    }
+
+    public void setSubject(ArrayList<String> subject) {
+        this.subject = subject;
+    }
+
+    public void setWeek(ArrayList<Integer> week) {
+        this.week = week;
+    }
+
+    public void addObject(int W, int T, String S){
+        week.add(W);
+        time.add(T);
+        subject.add(S);
+    }
+
+    public void removeObject(int index){
+        week.remove(index);
+        time.remove(index);
+        subject.remove(index);
+    }
+
+
+//
+//    public void addTime(int week, int startTime){
+//        calendars.get(week).add(startTime);
+//    }
+//
+//    public void removeTime(int week, int startTime){
+//        calendars.get(week).remove(startTime);
+//    }
+//
+//    public void editTime(int week, int oldTime, int newTime){
+//        calendars.get(week).remove(oldTime);
+//        calendars.get(week).remove(newTime);
+//    }
+
     //private double rating;  // @Philip won't this variable just be an average that's computed from DB?
                             // so we shouldn't necessarily keep it as a local private variable
     //private String reviews; // same as above, what reviews are we keeping in class?

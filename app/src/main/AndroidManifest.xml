@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TutorHome"></activity>
+        <activity android:name=".TuteeHome"></activity>
+        <activity android:name=".Registration"></activity>
+        <activity android:name=".TuteeProfile"></activity>
+        <activity android:name=".TutorProfile"></activity>
+        <activity android:name=".updateProfile"></activity>
     </application>
 
 </manifest>
