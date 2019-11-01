@@ -19,7 +19,7 @@ class Tutor extends Student {
     private ArrayList<Integer> time;
     private ArrayList<String> subject;
 
-    public ArrayList<Integer> getWeek() {
+    public ArrayList<Integer> getDay() {
         return week;
     }
 
