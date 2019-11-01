@@ -42,25 +42,22 @@ public class Registration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-
+                            Toast.makeText(getApplicationContext(), "task unseccessful", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            FirebaseAuth.AuthStateListener mAuthListener = new FirebaseAuth.AuthStateListener() {
-                                @Override
-                                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    if (user != null) {
-                                        //user.sendEmailVerification();
-                                        // User is signed in
-                                        // NOTE: this Activity should get onpen only when the user is not signed in, otherwise
-                                        // the user will receive another verification email.
-                                       sendVerificationEmail();
-                                    } else {
-                                        // User is signed out
-
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(
+                                    new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                Toast.makeText(getApplicationContext(), "register sucessfully", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else{
+                                                Toast.makeText(getApplicationContext(), "register Unsucessfully", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
                                     }
-                                }
-                            };
+                            );
                         }
                     }
                 });
@@ -68,34 +65,5 @@ public class Registration extends AppCompatActivity {
                 finish();
             }
         });
-    }
-    public void sendVerificationEmail()
-    {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            // email sent
-                            // after email is sent just logout the user and finish this activity
-                            FirebaseAuth.getInstance().signOut();
-                            Toast.makeText(getApplicationContext(), "success email verificaiton", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "email sent unsecessful verificaiton", Toast.LENGTH_SHORT).show();;
-                            // email not sent, so display message and restart the activity or do whatever you wish to do
-
-                            //restart this activity
-                            overridePendingTransition(0, 0);
-                            finish();
-                            overridePendingTransition(0, 0);
-                            startActivity(getIntent());
-
-                        }
-                    }
-                });
     }
 }
