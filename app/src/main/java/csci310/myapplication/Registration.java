@@ -1,22 +1,15 @@
 package csci310.myapplication;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,14 +19,26 @@ public class Registration extends AppCompatActivity {
     private Button SaveButton;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private EditText email;
+    private EditText Username;
+    private EditText Name;
+    private EditText confirmPassword;
     private EditText passWord;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
         SaveButton = findViewById(R.id.saveButton);
-        email = findViewById(R.id.CreateEmail);
-        passWord = findViewById(R.id.CreatePassword);
+        email = findViewById(R.id.EditEmail);
+        passWord = findViewById(R.id.EditPassword);
+        Username = findViewById(R.id.EditUsername);
+        Name = findViewById(R.id.EditName);
+        confirmPassword = findViewById(R.id.EditConfirmPassword);
+        //get all user input values;
+        String user_name = Name.getText().toString();
+        String user_username = Username.getText().toString();
+        String user_password = passWord.getText().toString();
+        String user_confirmPassword = confirmPassword.getText().toString();
+        String user_email = email.getText().toString();
         //mAuth = FirebaseAuth.getInstance();
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
