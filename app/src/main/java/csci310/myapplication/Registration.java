@@ -98,7 +98,6 @@ public class Registration extends AppCompatActivity {
                             }
                         }
                     });
-                    Toast.makeText(getApplicationContext(), "account created", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 // form is invalid, attempt to resolve below

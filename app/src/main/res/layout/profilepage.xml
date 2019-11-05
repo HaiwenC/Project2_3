@@ -124,8 +124,8 @@
 
     <TextView
         android:id="@+id/ProfileDayOfWeek"
-        android:layout_width="29dp"
-        android:layout_height="44dp"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="MON"
         android:textSize="20sp"
