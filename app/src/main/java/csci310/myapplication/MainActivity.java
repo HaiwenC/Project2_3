@@ -162,6 +162,14 @@ public class MainActivity extends AppCompatActivity {
                             String studentID = "";
                             String name      = "";
                             String username  = "";
+                            int last_time    = -1;
+                            int last_day     = -1;
+                            String last_subject = "";
+                            int tutor_day    = -1;
+                            int tutor_time     = -1;
+                            String tutor_subject = "";
+                            int tutor_totalRating = -1;
+                            int tutor_numRating   = -1;
                             boolean isExist = false;
                             Intent i;
                             for (QueryDocumentSnapshot document : task.getResult()) {
@@ -171,7 +179,17 @@ public class MainActivity extends AppCompatActivity {
                                 studentID = document.getData().get("studentID").toString();
                                 name      = document.getData().get("name").toString();
                                 username  = document.getData().get("username").toString();
-
+                                if(tutee) {
+                                    last_time = Integer.parseInt(document.getData().get("last_time").toString());
+                                    last_day  = Integer.parseInt(document.getData().get("last_day").toString());
+                                    last_subject = document.getData().get("last_subject").toString();
+                                }else{
+                                    tutor_day = Integer.parseInt(document.getData().get("tutor_day").toString());
+                                    tutor_time  = Integer.parseInt(document.getData().get("tutor_time").toString());
+                                    tutor_subject = document.getData().get("tutor_subject").toString();
+                                    tutor_totalRating = Integer.parseInt(document.getData().get("totalRating").toString());
+                                    tutor_numRating   = Integer.parseInt(document.getData().get("numRating").toString());
+                                }
                             }
                             if (!isExist) {
                                 Toast.makeText(getApplicationContext(), "User is not existed", Toast.LENGTH_LONG).show();
@@ -181,9 +199,17 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Password is correct", Toast.LENGTH_LONG).show();
                                 if(tutee == true) {
                                     tuteeInfo = new Tutee(studentID,email ,name, username, password);
+                                    tuteeInfo.setLastSearch_day(last_day);
+                                    tuteeInfo.setLastSearch_time(last_time);
+                                    tuteeInfo.setLastSearch_subject(last_subject);
                                     i = new Intent(getApplicationContext(),TuteeHome.class);
                                 }else {
                                     tutorInfo = new Tutor(studentID,email ,name, username, password);
+                                    tutorInfo.setSubjectNew(tutor_subject);
+                                    tutorInfo.setTimeNew(tutor_time);
+                                    tutorInfo.setWeekNew(tutor_day);
+                                    tutorInfo.setNumRatings(tutor_numRating);
+                                    tutorInfo.setRatingTotal(tutor_totalRating);
                                     i = new Intent(getApplicationContext(),TutorHome.class);
                                 }
                                 startActivity(i);

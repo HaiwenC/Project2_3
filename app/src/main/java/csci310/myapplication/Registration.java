@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -26,6 +27,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import model.Tutee;
+import model.Tutor;
+
+import static csci310.myapplication.MainActivity.tuteeRefe;
+import static csci310.myapplication.MainActivity.tutorRefe;
 
 public class Registration extends AppCompatActivity {
     private Button SaveButton;
@@ -79,6 +86,7 @@ public class Registration extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
+                                                    checkAddUser(user.getText().toString(),passWord2.getText().toString(),name.getText().toString(),email.getText().toString(),"5928277175");
                                                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                                                 }
                                                 else{
@@ -116,7 +124,13 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
-    public void isExist(){
+    public void checkAddUser(final String username, final String password, final String name, final String email, final String studentID){
+        CollectionReference citiesRef;
+        if (tutee == true){
+            citiesRef = tuteeRefe;
+        }else {
+            citiesRef = tutorRefe;
+        }
         Query query = citiesRef.whereEqualTo("username", username);
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -128,16 +142,32 @@ public class Registration extends AppCompatActivity {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());
                                 isExist = true;
                             }
-                            Toast.makeText(getApplicationContext(), "This user is" + String.valueOf(isExist), Toast.LENGTH_LONG).show();
+                            if (isExist) {
+                                Toast.makeText(getApplicationContext(), "This user is existed", Toast.LENGTH_LONG).show();
+                            } else {
+                                CollectionReference citiesRefInside;
+                                if (tutee == true){
+                                    Tutee tuteeNew = new Tutee(studentID, email, name, username, password);
+                                    tuteeNew.setLastSearch_time(-1);
+                                    tuteeNew.setLastSearch_day(-1);
+                                    tuteeNew.setLastSearch_subject("");
+                                    tuteeRefe.document(username).set(tuteeNew);
+                                } else {
+                                    Tutor tutorNew = new Tutor(studentID, email, name, username, password);
+                                    tutorNew.setRatingTotal(0);
+                                    tutorNew.setNumRatings(0);
+                                    tutorNew.setWeekNew(-1);
+                                    tutorNew.setTimeNew(-1);
+                                    tutorNew.setSubjectNew("");
+                                    tutorRefe.document(username).set(tutorNew);
+                                }
+                                Toast.makeText(getApplicationContext(), "User added", Toast.LENGTH_LONG).show();
+                            }
+
                         } else {
                             Log.d("qqqq","Error, can't run query");
                         }
                     }
                 });
-    }
-
-    public void addChangeUser(csci310.myapplication.model.Tutee tutee) {
-        db.collection("tutees").document(username).set(tutee);
-        Toast.makeText(getApplicationContext(), "User added", Toast.LENGTH_LONG).show();
     }
 }
