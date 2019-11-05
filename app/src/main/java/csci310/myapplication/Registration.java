@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,19 +34,33 @@ public class Registration extends AppCompatActivity {
     private EditText name;
     private EditText email;
     private EditText passWord;
+    private RadioGroup RButton;
     private EditText passWord2;
+    private boolean tutee = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
         SaveButton = findViewById(R.id.saveButton);
-        user = findViewById(R.id.CreateUser);
-        name = findViewById(R.id.CreateName);
-        email = findViewById(R.id.CreateEmail);
-        passWord = findViewById(R.id.CreatePassword);
-        passWord2 = findViewById(R.id.CreateConfirm);
+        RButton = findViewById(R.id.radioGroup);
+        user = findViewById(R.id.EditUsername);
+        name = findViewById(R.id.EditName);
+        email = findViewById(R.id.EditEmail);
+        passWord = findViewById(R.id.EditPassword);
+        passWord2 = findViewById(R.id.EditConfirmPassword);
         //mAuth = FirebaseAuth.getInstance();
+        RButton.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i == R.id.radioTutee){
+                    tutee = true;
+                }
+                else if(i == R.id.radioTutor){
+                    tutee = false;
+                }
+            }
+        });
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,5 +115,29 @@ public class Registration extends AppCompatActivity {
 
             }
         });
+    }
+    public void isExist(){
+        Query query = citiesRef.whereEqualTo("username", username);
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        boolean isExist = false;
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("qqqq", document.getId() + " => " + document.getData());
+                                isExist = true;
+                            }
+                            Toast.makeText(getApplicationContext(), "This user is" + String.valueOf(isExist), Toast.LENGTH_LONG).show();
+                        } else {
+                            Log.d("qqqq","Error, can't run query");
+                        }
+                    }
+                });
+    }
+
+    public void addChangeUser(csci310.myapplication.model.Tutee tutee) {
+        db.collection("tutees").document(username).set(tutee);
+        Toast.makeText(getApplicationContext(), "User added", Toast.LENGTH_LONG).show();
     }
 }
