@@ -17,7 +17,7 @@ public class TuteeProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tuteeprofilepage);
         name = findViewById(R.id.EditUsername);
-        update.findViewById(R.id.SaveBut);
+        update = findViewById(R.id.SaveBut);
         name.setText(MainActivity.tuteeInfo.getName());
         update.setOnClickListener(new View.OnClickListener() {
             @Override
