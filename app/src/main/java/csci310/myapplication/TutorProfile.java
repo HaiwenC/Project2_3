@@ -48,14 +48,21 @@ public class TutorProfile extends AppCompatActivity {
         name.setText(MainActivity.tutorInfo.getName());
         Log.d("qqqq",MainActivity.tutorInfo.getSubjectNew());
         courseName.setText(MainActivity.tutorInfo.getSubjectNew());
+
+
+
         int timeStart = MainActivity.tutorInfo.getTimeNew();
-        int timeEnd = timeStart + 1;
-        String strTimeStart = Integer.toString(timeStart);
-        if (strTimeStart.length() == 1) strTimeStart = "0" + strTimeStart;
-        String strTimeEnd = Integer.toString(timeEnd);
-        if (strTimeEnd.length() == 1) strTimeEnd = "0" + strTimeEnd;
-        String periodRange = strTimeStart + ":00 - " + strTimeEnd + ":00";
-        period.setText(periodRange);
+        if (timeStart == -1) {
+            period.setText("Please set your hours.");
+        } else {
+            int timeEnd = timeStart + 1;
+            String strTimeStart = Integer.toString(timeStart);
+            if (strTimeStart.length() == 1) strTimeStart = "0" + strTimeStart;
+            String strTimeEnd = Integer.toString(timeEnd);
+            if (strTimeEnd.length() == 1) strTimeEnd = "0" + strTimeEnd;
+            String periodRange = strTimeStart + ":00 - " + strTimeEnd + ":00";
+            period.setText(periodRange);
+        }
         email.setText(MainActivity.tutorInfo.getEmail());
         Dayofweek.setText(week[MainActivity.tutorInfo.getWeekNew()%7]);
 
