@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                             if (!isExist) {
-                                Toast.makeText(getApplicationContext(), "User is not existed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_LONG).show();
                             } else if (!password.equals(inputPW)) {
                                 Toast.makeText(getApplicationContext(), "Password is wrong", Toast.LENGTH_LONG).show();
                             } else {

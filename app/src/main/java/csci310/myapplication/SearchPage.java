@@ -94,8 +94,8 @@ public class SearchPage extends AppCompatActivity {
                                         sub    = document.getData().get("subject").toString();
                                         ava_day = Integer.parseInt(document.getData().get("weekNew").toString());
                                         ava_time = Integer.parseInt(document.getData().get("timeNew").toString());
-                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
                                         if ((subject.equals(sub)) && (time==ava_time) && (day == ava_day)){
+                                            Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
                                             Requests.add(tutorNew);
                                         }
                                     }

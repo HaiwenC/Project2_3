@@ -12,17 +12,29 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import model.Request;
 import model.Tutee;
 import model.Tutor;
+
+import static csci310.myapplication.MainActivity.requestRefe;
 
 
 public class TutorHome extends AppCompatActivity {
@@ -80,5 +92,30 @@ public class TutorHome extends AppCompatActivity {
             period.setText(String.valueOf(gp.getTime()));
             return convertView;
         }
+    }
+
+    private void searchRequest(String tutorUN) {
+        Query query = requestRefe.whereEqualTo("tutorUsername", tutorUN);
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            boolean isExist = false;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("qqqq", document.getId() + " => " + document.getData());
+                                isExist = true;
+                                Request requestNew = new Request();
+                            }
+                            if (!isExist) {
+                                Toast.makeText(getApplicationContext(), "Session does not exist", Toast.LENGTH_LONG).show();
+                            } else {
+
+                            }
+                        } else {
+                            Log.d("qqqq","Error, can't run query");
+                        }
+                    }
+                });
     }
 }
