@@ -52,7 +52,7 @@ public class SessionHistory extends AppCompatActivity {
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
-            Button accept = convertView.findViewById(R.id.accept);
+            Button accept = convertView.findViewById(R.id.Apply);
             Button reject = convertView.findViewById(R.id.reject);
             accept.setVisibility(View.INVISIBLE);
             reject.setVisibility(View.INVISIBLE);
