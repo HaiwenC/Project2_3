@@ -113,9 +113,7 @@ public class MainActivity extends AppCompatActivity {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if (user.isEmailVerified())
                                 {
-                                    finish();
-                                    Intent i = new Intent(getApplicationContext(),TutorHome.class);
-                                    startActivity(i);
+
                                 } else {
                                     FirebaseAuth.getInstance().signOut();
                                     Toast.makeText(getApplicationContext(), "please verify email", Toast.LENGTH_SHORT).show();
@@ -123,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     });
+                    checkPassword(username.getText().toString(), passWord.getText().toString());
+
                 }
             }
         });
@@ -184,11 +184,21 @@ public class MainActivity extends AppCompatActivity {
                                     last_day  = Integer.parseInt(document.getData().get("last_day").toString());
                                     last_subject = document.getData().get("last_subject").toString();
                                 }else{
-                                    tutor_day = Integer.parseInt(document.getData().get("tutor_day").toString());
-                                    tutor_time  = Integer.parseInt(document.getData().get("tutor_time").toString());
-                                    tutor_subject = document.getData().get("tutor_subject").toString();
-                                    tutor_totalRating = Integer.parseInt(document.getData().get("totalRating").toString());
-                                    tutor_numRating   = Integer.parseInt(document.getData().get("numRating").toString());
+                                    if (document.getData().get("tutor_day") != null) {
+                                        tutor_day = Integer.parseInt(document.getData().get("tutor_day").toString());
+                                    } else tutor_day = 0;
+                                    if (document.getData().get("tutor_time") != null) {
+                                        tutor_time  = Integer.parseInt(document.getData().get("tutor_time").toString());
+                                    } else tutor_time = 0;
+                                    if (document.getData().get("tutor_subject") != null) {
+                                        tutor_subject = document.getData().get("tutor_subject").toString();
+                                    } else tutor_subject = "";
+                                    if (document.getData().get("totalRating") != null) {
+                                        tutor_totalRating = Integer.parseInt(document.getData().get("totalRating").toString());
+                                    } else tutor_totalRating = 0;
+                                    if (document.getData().get("numRating") != null) {
+                                        tutor_numRating   = Integer.parseInt(document.getData().get("numRating").toString());
+                                    } else tutor_numRating = 0;
                                 }
                             }
                             if (!isExist) {
@@ -211,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
                                     tutorInfo.setNumRatings(tutor_numRating);
                                     tutorInfo.setRatingTotal(tutor_totalRating);
                                     i = new Intent(getApplicationContext(),TutorHome.class);
+                                    Log.d("qqqq","asdfasdf");
                                 }
                                 startActivity(i);
                             }

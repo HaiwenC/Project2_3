@@ -35,9 +35,12 @@ public class TutorProfile extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        name.setText(MainActivity.tutorInfo.getName());
-        courseName.setText(MainActivity.tutorInfo.getSubjectNew());
-        period.setText(MainActivity.tutorInfo.getTimeNew());
-        Dayofweek.setText(week[MainActivity.tutorInfo.getWeekNew()%7]);
+        if (MainActivity.tutorInfo == null) {
+            name.setText("tutor is null");
+        }
+        //name.setText(MainActivity.tutorInfo.getName());
+        //courseName.setText(MainActivity.tutorInfo.getSubjectNew());
+        //period.setText(MainActivity.tutorInfo.getTimeNew());
+        //Dayofweek.setText(week[MainActivity.tutorInfo.getWeekNew()%7]);
     }
 }
