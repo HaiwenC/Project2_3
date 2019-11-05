@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private EditText username;
     private EditText passWord;
-    private static Tutee tuteeInfo;
-    private static Tutor tutorInfo;
+    public static Tutee tuteeInfo;
+    public static Tutor tutorInfo;
 
     public static CollectionReference tuteeRefe = db.collection("tutees");
     public static CollectionReference tutorRefe = db.collection("tutors");
@@ -129,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 Intent i = new Intent(getApplicationContext(),Registration.class);
                 startActivity(i);
             }
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                                 studentID = document.getData().get("studentID").toString();
                                 name      = document.getData().get("name").toString();
                                 username  = document.getData().get("username").toString();
+
                             }
                             if (!isExist) {
                                 Toast.makeText(getApplicationContext(), "User is not existed", Toast.LENGTH_LONG).show();
@@ -186,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
                                     i = new Intent(getApplicationContext(),TutorHome.class);
                                 }
                                 startActivity(i);
-
                             }
                         } else {
                             Log.d("qqqq","Error, can't run query");
