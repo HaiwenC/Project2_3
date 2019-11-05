@@ -87,7 +87,7 @@ public class TutorHome extends AppCompatActivity {
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
             Request gp = Groups.get(position);
-            name.setText(gp.getTutee().getName());
+            name.setText(gp.getTutee());
             course.setText(gp.getSubject());
             period.setText(String.valueOf(gp.getTime()));
             return convertView;

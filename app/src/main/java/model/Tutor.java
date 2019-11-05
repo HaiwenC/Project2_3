@@ -65,7 +65,7 @@ public class Tutor extends Student {
 
     private double totalRating;
     private int numRatings;
-    private ArrayList<String> reviews;
+//    private ArrayList<String> reviews;
 
     public Tutor(String studentID, String email, String name, String username, String password) {
         super(studentID, email, name, username, password);
@@ -140,18 +140,18 @@ public class Tutor extends Student {
 //       return sectionsTeaching.remove(s);
 //        // returns true if removed, false otherwise
 //    }
-
-    public void addReview(String newReview){
-        reviews.add(newReview);
-    }
-
-    public ArrayList<String> getReviews() {
-        // perform sql command to retrieve all reviews into resultset
-        // and store that list in result set to this reviews arraylist
-        // On the other hand, should this not be a string, but Review objects
-        // because reviews will also hold session info like rating, student, subject, etc.
-        return reviews;
-    }
+//
+//    public void addReview(String newReview){
+//        reviews.add(newReview);
+//    }
+//
+//    public ArrayList<String> getReviews() {
+//        // perform sql command to retrieve all reviews into resultset
+//        // and store that list in result set to this reviews arraylist
+//        // On the other hand, should this not be a string, but Review objects
+//        // because reviews will also hold session info like rating, student, subject, etc.
+//        return reviews;
+//    }
 //
 //    public ArrayList<Request> getRequestsReceived() {
 //        return requestsReceived;
