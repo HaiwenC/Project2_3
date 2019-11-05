@@ -1,5 +1,6 @@
 package csci310.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -64,7 +65,8 @@ public class updateProfile extends AppCompatActivity {
                 MainActivity.tutorRefe.document(MainActivity.tutorInfo.getUsername()).set(MainActivity.tutorInfo);
                 //MainActivity.tuteeRefe.document(MainActivity.tuteeInfo.getUsername()).set(MainActivity.tuteeInfo);
                 Toast.makeText(getApplicationContext(), "Successfully updated your profile", Toast.LENGTH_LONG).show();
-                finish();
+                Intent i = new Intent(getApplicationContext(),TutorProfile.class);
+                startActivity(i);
             }
         });
     }

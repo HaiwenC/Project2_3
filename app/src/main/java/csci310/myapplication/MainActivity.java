@@ -191,8 +191,8 @@ public class MainActivity extends AppCompatActivity {
                                     if (document.getData().get("timeNew") != null) {
                                         tutor_time  = Integer.parseInt(document.getData().get("timeNew").toString());
                                     } else tutor_time = 0;
-                                    if (document.getData().get("tutor_subject") != null) {
-                                        tutor_subject = document.getData().get("tutor_subject").toString();
+                                    if (document.getData().get("subjectNew") != null) {
+                                        tutor_subject = document.getData().get("subjectNew").toString();
                                     } else tutor_subject = "";
                                     if (document.getData().get("totalRating") != null) {
                                         tutor_totalRating = Integer.parseInt(document.getData().get("totalRating").toString());
@@ -222,9 +222,9 @@ public class MainActivity extends AppCompatActivity {
                                     tutorInfo.setNumRatings(tutor_numRating);
                                     tutorInfo.setRatingTotal(tutor_totalRating);
                                     i = new Intent(getApplicationContext(),TutorHome.class);
-                                    Log.d("qqqq","asdfasdf");
                                 }
                                 startActivity(i);
+                                finish();
                             }
                         } else {
                             Log.d("qqqq","Error, can't run query");

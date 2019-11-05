@@ -12,11 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TutorProfile extends AppCompatActivity {
     private Button update;
-    private TextView name;
-    private TextView courseName;
-    private TextView Dayofweek;
-    private TextView email;
-    private TextView period;
+    volatile private TextView name;
+    volatile private TextView courseName;
+    volatile private TextView Dayofweek;
+    volatile private TextView email;
+    volatile private TextView period;
     private String[] week = new String[]{"SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"};
 
     @Override
@@ -37,6 +37,7 @@ public class TutorProfile extends AppCompatActivity {
             }
         });
         name.setText(MainActivity.tutorInfo.getName());
+        Log.d("qqqq",MainActivity.tutorInfo.getSubjectNew());
         courseName.setText(MainActivity.tutorInfo.getSubjectNew());
         int timeStart = MainActivity.tutorInfo.getTimeNew();
         int timeEnd = timeStart + 1;
@@ -48,5 +49,6 @@ public class TutorProfile extends AppCompatActivity {
         period.setText(periodRange);
         email.setText(MainActivity.tutorInfo.getEmail());
         Dayofweek.setText(week[MainActivity.tutorInfo.getWeekNew()%7]);
+
     }
 }
