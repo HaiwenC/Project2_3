@@ -181,9 +181,9 @@ public class MainActivity extends AppCompatActivity {
                                 name      = document.getData().get("name").toString();
                                 username  = document.getData().get("username").toString();
                                 if(tutee) {
-                                    last_time = Integer.parseInt(document.getData().get("last_time").toString());
-                                    last_day  = Integer.parseInt(document.getData().get("last_day").toString());
-                                    last_subject = document.getData().get("last_subject").toString();
+                                    last_time = document.getData().get("last_time") == null? 0:Integer.parseInt(document.getData().get("last_time").toString());
+                                    last_day  = document.getData().get("last_day") == null? 0: Integer.parseInt(document.getData().get("last_day").toString());
+                                    last_subject = document.getData().get("last_subject") == null? null: document.getData().get("last_subject").toString();
                                 }else{
                                     if (document.getData().get("tutor_day") != null) {
                                         tutor_day = Integer.parseInt(document.getData().get("tutor_day").toString());

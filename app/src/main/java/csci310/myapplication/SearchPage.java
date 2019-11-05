@@ -60,9 +60,6 @@ public class SearchPage extends AppCompatActivity {
         spinner_subject = findViewById(R.id.CourseSelect);
         spinner_day = findViewById(R.id.daySelect);
         spinner_period = findViewById(R.id.periodSelect);
-        subject = spinner_subject.getSelectedItem().toString();
-        day    = spinner_day.getSelectedItemPosition();
-        period  = Integer.valueOf(spinner_period.getSelectedItem().toString().substring(0,2));
 //        subject = findViewById(R.id.Subject);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +72,10 @@ public class SearchPage extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                subject = spinner_subject.getSelectedItem().toString();
+                day    = spinner_day.getSelectedItemPosition();
+                period  = Integer.valueOf(spinner_period.getSelectedItem().toString().substring(0,2));
+                Log.d("debugSearch", subject+ String.valueOf(day) + " " + String.valueOf(period));
                 Query query = tutorRefe.whereEqualTo("subject", subject);
                 query.get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
