@@ -91,8 +91,8 @@ public class TutorHome extends AppCompatActivity {
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
-            Button accept = convertView.findViewById(R.id.reject);
-            Button reject = convertView.findViewById(R.id.Apply);
+            Button accept = convertView.findViewById(R.id.Apply);
+            Button reject = convertView.findViewById(R.id.reject);
             final Request gp = Groups.get(position);
             accept.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -102,10 +102,10 @@ public class TuteeHome extends AppCompatActivity {
             reject.setVisibility(View.INVISIBLE);
             status.setVisibility(View.VISIBLE);
             Request gp = Groups.get(position);
-            name.setText(gp.getTutee());
+            name.setText(gp.getTutor());
             course.setText(gp.getSubject());
             status.setText(gp.getStatus());
-            period.setText(String.valueOf(gp.getTime()));
+            period.setText(String.valueOf(gp.getTime())+":00 - " + String.valueOf(gp.getTime()+1)+":00");
             return convertView;
         }
     }

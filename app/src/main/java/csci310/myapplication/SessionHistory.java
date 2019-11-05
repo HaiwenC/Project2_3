@@ -50,7 +50,13 @@ public class SessionHistory extends AppCompatActivity {
         //        list.l(new View.OnClickListener() {
         //            @Override
         //            public void onClick(View view) {
-        Query query = sessionRefe.whereEqualTo("tutorName", "tommy");
+        Query query;
+        if(MainActivity.tuteeInfo!=null){
+            query = sessionRefe.whereEqualTo("tutee", MainActivity.tuteeInfo.getUsername());
+        }
+        else{
+            query = sessionRefe.whereEqualTo("tutor", MainActivity.tutorInfo.getUsername());
+        }
         query.get()
                 .addOnCompleteListener(new OnCompleteListener < QuerySnapshot > () {
                     @Override
@@ -75,8 +81,8 @@ public class SessionHistory extends AppCompatActivity {
                                 time = Integer.parseInt(document.getData().get("time").toString());
                                 review = document.getData().get("review").toString();
                                 subject = document.getData().get("subject").toString();
-                                tuteeName = document.getData().get("tuteeName").toString();
-                                tutorName = document.getData().get("tutorName").toString();
+                                tuteeName = document.getData().get("tutee").toString();
+                                tutorName = document.getData().get("tutor").toString();
                                 //                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
                                 Session curSession = new Session(tutorName, tuteeName, subject, day, time);
                                 groups.add(curSession);
@@ -86,7 +92,6 @@ public class SessionHistory extends AppCompatActivity {
                                 adapter.notifyDataSetChanged();
                             } else {
                                 CollectionReference citiesRefInside;
-                                Toast.makeText(getApplicationContext(), "session added", Toast.LENGTH_LONG).show();
                             }
 
                         } else {
