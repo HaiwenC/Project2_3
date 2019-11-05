@@ -44,7 +44,7 @@ public class SearchPage extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
                 convertView = getLayoutInflater().inflate(
-                        R.layout.requestlayout, null);
+                        R.layout.tutee_application_layout, null);
             }
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
