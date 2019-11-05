@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +42,11 @@ public class SearchPage extends AppCompatActivity {
     private Button search;
     private ListView list;
     private SearchAdapter adapter;
+    private Spinner spinner_subject;
+    private Spinner spinner_day;
+    private Spinner spinner_period;
     private String subject;
-    private int time;
+    private int period;
     private int day;
     //    private EditText subject;
     private List<Tutor> Requests = new ArrayList<>();
@@ -53,9 +57,12 @@ public class SearchPage extends AppCompatActivity {
         list = findViewById(R.id.listOfSearch);
         save = findViewById(R.id.SaveBut);
         search = findViewById(R.id.SearchBut);
-        subject = "Math";
-        time    = 14;
-        day     = 2;
+        spinner_subject = findViewById(R.id.CourseSelect);
+        spinner_day = findViewById(R.id.daySelect);
+        spinner_period = findViewById(R.id.periodSelect);
+        subject = spinner_subject.getSelectedItem().toString();
+        day    = spinner_day.getSelectedItemPosition();
+        period  = Integer.valueOf(spinner_period.getSelectedItem().toString().substring(0,2));
 //        subject = findViewById(R.id.Subject);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,18 +101,18 @@ public class SearchPage extends AppCompatActivity {
                                         sub    = document.getData().get("subject").toString();
                                         ava_day = Integer.parseInt(document.getData().get("weekNew").toString());
                                         ava_time = Integer.parseInt(document.getData().get("timeNew").toString());
-                                        if ((subject.equals(sub)) && (time==ava_time) && (day == ava_day)){
-                                            Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
+                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
+                                        if ((subject.equals(sub)) && (period==ava_time) && (day == ava_day)){
                                             Requests.add(tutorNew);
                                         }
                                     }
                                     if (isExist) {
                                         Toast.makeText(getApplicationContext(), "This user is existed", Toast.LENGTH_LONG).show();
+                                        adapter.notifyDataSetChanged();
                                     } else {
                                         CollectionReference citiesRefInside;
                                         Toast.makeText(getApplicationContext(), "User added", Toast.LENGTH_LONG).show();
                                     }
-
                                 } else {
                                     Log.d("qqqq","Error, can't run query");
                                 }
