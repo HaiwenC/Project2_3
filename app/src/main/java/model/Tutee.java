@@ -18,7 +18,29 @@ public class Tutee extends Student {
         lastSearch_time = -1;
     }
 
+    public String getLastSearch_subject() {
+        return lastSearch_subject;
+    }
 
+    public void setLastSearch_subject(String lastSearch_subject) {
+        this.lastSearch_subject = lastSearch_subject;
+    }
+
+    public int getLastSearch_day() {
+        return lastSearch_day;
+    }
+
+    public void setLastSearch_day(int lastSearch_day) {
+        this.lastSearch_day = lastSearch_day;
+    }
+
+    public int getLastSearch_time() {
+        return lastSearch_time;
+    }
+
+    public void setLastSearch_time(int lastSearch_time) {
+        this.lastSearch_time = lastSearch_time;
+    }
 //    //pulls data from database, search the list by time, and return a list of matching results
 //    private ArrayList<Calendar> SearchTutor(String timeBegin, String timeEnd){
 //        //TODO pull tutor's availability
