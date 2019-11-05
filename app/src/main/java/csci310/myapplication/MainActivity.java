@@ -188,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
                                     if (document.getData().get("tutor_day") != null) {
                                         tutor_day = Integer.parseInt(document.getData().get("tutor_day").toString());
                                     } else tutor_day = 0;
-                                    if (document.getData().get("tutor_time") != null) {
-                                        tutor_time  = Integer.parseInt(document.getData().get("tutor_time").toString());
+                                    if (document.getData().get("timeNew") != null) {
+                                        tutor_time  = Integer.parseInt(document.getData().get("timeNew").toString());
                                     } else tutor_time = 0;
                                     if (document.getData().get("tutor_subject") != null) {
                                         tutor_subject = document.getData().get("tutor_subject").toString();
