@@ -80,7 +80,7 @@ public class TutorHome extends AppCompatActivity {
             this.Groups = objects;
         }
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
                 convertView = getLayoutInflater().inflate(
                         R.layout.requestlayout, null);
@@ -88,6 +88,22 @@ public class TutorHome extends AppCompatActivity {
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
+            Button accept = convertView.findViewById(R.id.reject);
+            Button reject = convertView.findViewById(R.id.Apply);
+            accept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    groups.remove(position);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+            reject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    groups.remove(position);
+                    adapter.notifyDataSetChanged();
+                }
+            });
             Request gp = Groups.get(position);
             name.setText(gp.getTutee());
             course.setText(gp.getSubject());
