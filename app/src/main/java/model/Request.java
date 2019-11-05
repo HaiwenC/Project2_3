@@ -6,7 +6,7 @@ public class Request {
     private String subject;
     private int dayOfWeek;
     private int timeBegin;
-    private int index;
+//    private int index;
     private String status;
 
     public Request(Tutee tutee, Tutor tutor, String className, int day ,int begin, int ind){
@@ -15,7 +15,7 @@ public class Request {
         this.subject = className;
         this.dayOfWeek = day;
         this.timeBegin = begin;
-        this.index = ind;
+//        this.index = ind;
 
         //possible status: 1:"accepted" 2:"rejected" 3:"available"
         this.status = "available";
@@ -29,7 +29,7 @@ public class Request {
         status = newStatus;
 //        Session newSession = new Sections(timeBegin, timeEnd);
         Session newSession = new Session(tutor.getName(), tutee.getName(), subject, dayOfWeek, timeBegin);
-        tutee.addSession(newSession);
+//        tutee.addSession(newSession);
 //        tutor.addSections(newSession, dayOfWeek, timeBegin);
         status = "accepted";
         //TODO add session to database
