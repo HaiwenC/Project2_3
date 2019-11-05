@@ -38,8 +38,8 @@ public class TutorHome extends AppCompatActivity {
         list = findViewById(R.id.listNotes);
         session = findViewById(R.id.Session);
         Log.d("debug listview", list.toString());
-        groups.add(new Request(new Tutee("1", "1", "Beiyou","1"),
-                new Tutor("1", "1", "!", "1"), "csci109", 1 ,8, 9));
+        groups.add(new Request(new Tutee("1", "1", "Beiyou","1", "aaaaaaaaa"),
+                new Tutor("1", "1", "!", "1", "aaaaaaaaa"), "csci109", 1 ,8, 9));
         profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override

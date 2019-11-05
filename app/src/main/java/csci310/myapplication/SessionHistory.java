@@ -31,8 +31,8 @@ public class SessionHistory extends AppCompatActivity {
         setContentView(R.layout.sessionhistory);
         list = findViewById(R.id.sessionHistory);
         Log.d("debug listview", list.toString());
-        groups.add(new Request(new Tutee("1", "1", "Beiyou","1"),
-                new Tutor("1", "1", "!", "1"), "csci109", 1 ,8, 9));
+        groups.add(new Request(new Tutee("1", "1", "Beiyou","1", "aaaaaaaaa"),
+                new Tutor("1", "1", "!", "1", "aaaaaaaaa"), "csci109", 1 ,8, 9));
         adapter = new SessionAdapter(getApplicationContext(), 0, groups);
         //Log.d("debug adapter", adapter.toString());
         list.setAdapter(adapter);

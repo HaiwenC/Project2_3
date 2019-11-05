@@ -39,8 +39,8 @@ public class Tutor extends Student {
     private int numRatings;
     private ArrayList<String> reviews;
 
-    public Tutor(String studentID, String email, String name, String username) {
-        super(studentID, email, name, username);
+    public Tutor(String studentID, String email, String name, String username, String password) {
+        super(studentID, email, name, username, password);
         sectionsTeaching = new ArrayList<Session>();
         numRatings=0;
         ratingTotal=0;

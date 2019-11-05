@@ -10,8 +10,8 @@ public class Tutee extends Student {
     private int lastSearch_day;
     private int lastSearch_time;
 
-    public Tutee(String studentID, String email, String name, String username) {
-        super(studentID, email, name, username);
+    public Tutee(String studentID, String email, String name, String username, String password) {
+        super(studentID, email, name, username, password);
         sectionsLearning = new ArrayList<Session>();
         lastSearch_subject = "";
         lastSearch_day = -1;
@@ -19,12 +19,12 @@ public class Tutee extends Student {
     }
 
 
-    //pulls data from database, search the list by time, and return a list of matching results
-    private ArrayList<Calendar> SearchTutor(String timeBegin, String timeEnd){
-        //TODO pull tutor's availability
-        return null;
-
-    }
+//    //pulls data from database, search the list by time, and return a list of matching results
+//    private ArrayList<Calendar> SearchTutor(String timeBegin, String timeEnd){
+//        //TODO pull tutor's availability
+//        return null;
+//
+//    }
 
     public void addSession(Session newClass){
         sectionsLearning.add(newClass);
