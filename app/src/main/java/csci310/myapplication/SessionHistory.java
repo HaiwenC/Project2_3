@@ -38,7 +38,7 @@ public class SessionHistory extends AppCompatActivity {
     private ListView list;
     private SessionAdapter adapter;
     private String tutorName;
-    public static List<Session> groups = new ArrayList<Session>();
+    public static List < Session > groups = new ArrayList < Session > ();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,68 +47,69 @@ public class SessionHistory extends AppCompatActivity {
         tutorName = "Math";
 
 
-        list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Query query = sessionRefe.whereEqualTo("tutorName", tutorName);
-                query.get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                boolean isExist = false;
-////                                String password = "";
-////                                String studentID = "";
-////                                String name      = "";
-////                                String username  = "";
-////                                String email     = "";
-                                int day = -1;
-                                String review = "";
-                                String subject= "";
-                                int time = -1;
-                                String tuteeName = "";
-                                String tutorName = "";
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                        Log.d("qqqq", document.getId() + " => " + document.getData());
-                                        isExist = true;
-                                        day = (int)document.getData().get("day");
-                                        time = (int)document.getData().get("time");
-                                        review = document.getData().get("review").toString();
-                                        subject      = document.getData().get("subject").toString();
-                                        tuteeName  = document.getData().get("tuteeName").toString();
-                                        tutorName  = document.getData().get("tutorName").toString();
-//                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
-                                        Session curSession = new Session(tutorName,tuteeName,subject,day,time);
-                                        groups.add(curSession);
-                                    }
-                                    if (isExist) {
-                                        Toast.makeText(getApplicationContext(), "This session is existed", Toast.LENGTH_LONG).show();
-                                    } else {
-                                        CollectionReference citiesRefInside;
-                                        Toast.makeText(getApplicationContext(), "session added", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } else {
-                                    Log.d("qqqq","Error, can't run query");
-                                }
+        //        list.l(new View.OnClickListener() {
+        //            @Override
+        //            public void onClick(View view) {
+        Query query = sessionRefe.whereEqualTo("tutorName", "tommy");
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener < QuerySnapshot > () {
+                    @Override
+                    public void onComplete(@NonNull Task < QuerySnapshot > task) {
+                        boolean isExist = false;
+                        ////                                String password = "";
+                        ////                                String studentID = "";
+                        ////                                String name      = "";
+                        ////                                String username  = "";
+                        ////                                String email     = "";
+                        int day = -1;
+                        String review = "";
+                        String subject = "";
+                        int time = -1;
+                        String tuteeName = "";
+                        String tutorName = "";
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document: task.getResult()) {
+                                Log.d("stark", document.getId() + " => " + document.getData());
+                                isExist = true;
+                                day = Integer.parseInt(document.getData().get("day").toString());
+                                time = Integer.parseInt(document.getData().get("time").toString());
+                                review = document.getData().get("review").toString();
+                                subject = document.getData().get("subject").toString();
+                                tuteeName = document.getData().get("tuteeName").toString();
+                                tutorName = document.getData().get("tutorName").toString();
+                                //                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
+                                Session curSession = new Session(tutorName, tuteeName, subject, day, time);
+                                groups.add(curSession);
                             }
-                        });
-            }
-        });
+                            if (isExist) {
+                                Toast.makeText(getApplicationContext(), "This session is existed", Toast.LENGTH_LONG).show();
+                                adapter.notifyDataSetChanged();
+                            } else {
+                                CollectionReference citiesRefInside;
+                                Toast.makeText(getApplicationContext(), "session added", Toast.LENGTH_LONG).show();
+                            }
+
+                        } else {
+                            Log.d("qqqq", "Error, can't run query");
+                        }
+                    }
+                });
+        //            }
+        //        });
 
 
 
 
 
         Log.d("debug listview", list.toString());
-//        groups.add(new Session());
+        //        groups.add(new Session());
         adapter = new SessionAdapter(getApplicationContext(), 0, groups);
         //Log.d("debug adapter", adapter.toString());
         list.setAdapter(adapter);
     }
-    private class SessionAdapter extends ArrayAdapter<Session> {
-        List<Session> Groups;
-        public SessionAdapter(Context context, int resource, List<Session> objects) {
+    private class SessionAdapter extends ArrayAdapter < Session > {
+        List < Session > Groups;
+        public SessionAdapter(Context context, int resource, List < Session > objects) {
             super(context, resource, objects);
             this.Groups = objects;
         }
@@ -128,7 +129,7 @@ public class SessionHistory extends AppCompatActivity {
             Session gp = Groups.get(position);
             name.setText(gp.getTutee());
             course.setText(gp.getSubject());
-            period.setText(String.valueOf(gp.getTime()));
+            period.setText(String.valueOf(gp.getTime())+":00 - " + String.valueOf(gp.getTime()+1)+":00");
             return convertView;
         }
     }
