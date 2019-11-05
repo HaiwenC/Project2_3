@@ -37,6 +37,7 @@ import model.Tutor;
 
 import static csci310.myapplication.MainActivity.requestRefe;
 import static csci310.myapplication.MainActivity.sessionRefe;
+import static csci310.myapplication.MainActivity.tutorInfo;
 
 
 public class TutorHome extends AppCompatActivity {
@@ -54,7 +55,7 @@ public class TutorHome extends AppCompatActivity {
         Log.d("debug listview", list.toString());
 //        groups.add(new Request(new Tutee("1", "1", "Beiyou","1", "aaaaaaaaa"),
 //                new Tutor("1", "1", "!", "1", "aaaaaaaaa"), "csci109", 1 ,8, 9));
-        searchRequest("tommy");
+        searchRequest(tutorInfo.getUsername());
         profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override

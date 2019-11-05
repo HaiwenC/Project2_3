@@ -4,23 +4,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import model.Request;
 import model.Session;
 
 import static csci310.myapplication.MainActivity.requestRefe;
 import static csci310.myapplication.MainActivity.sessionRefe;
+import static csci310.myapplication.MainActivity.tuteeInfo;
 
 public class TuteeHome extends AppCompatActivity {
     private Button profile;
@@ -37,6 +48,7 @@ public class TuteeHome extends AppCompatActivity {
         Search = findViewById(R.id.Search);
         session = findViewById(R.id.TuteeSession);
         list = findViewById(R.id.listNotes);
+        searchRequest(tuteeInfo.getUsername());
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,5 +108,33 @@ public class TuteeHome extends AppCompatActivity {
             period.setText(String.valueOf(gp.getTime()));
             return convertView;
         }
+    }
+
+    private void searchRequest(String tuteeUN) {
+        Query query = requestRefe.whereEqualTo("tuteeUsername", tuteeUN);
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            boolean isExist = false;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("qqqq", document.getId() + " => " + document.getData());
+                                isExist = true;
+                                Request requestNew = new Request(document.getData().get("tuteeUsername").toString(),document.getData().get("tutorUsername").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("day").toString()),Integer.parseInt(document.getData().get("time").toString()));
+                                requestNew.setStatus(document.getData().get("status").toString());
+                                groups.add(requestNew);
+
+                            }
+                            if (!isExist) {
+                                Toast.makeText(getApplicationContext(), "Session does not exist", Toast.LENGTH_LONG).show();
+                            } else {
+                                adapter.notifyDataSetChanged();
+                            }
+                        } else {
+                            Log.d("qqqq","Error, can't run query");
+                        }
+                    }
+                });
     }
 }
