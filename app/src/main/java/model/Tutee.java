@@ -71,7 +71,7 @@ public class Tutee extends Student {
     //tutee can only search one hour
     public ArrayList<Request> getResults(String subject, int day, int beginTime, ArrayList<Tutor> tutors){
 
-        if (lastSearch_subject.equals("") || lastSearch_day == -1 || lastSearch_time == -1)
+        if (last_subject.equals("") || last_day == -1 || last_time == -1)
         {
             return null;
         }
@@ -92,9 +92,9 @@ public class Tutee extends Student {
             }
         }
 
-        lastSearch_subject = subject;
-        lastSearch_day = day;
-        lastSearch_time = beginTime;
+        last_subject = subject;
+        last_day = day;
+        last_time = beginTime;
         return results;
     }
 }
