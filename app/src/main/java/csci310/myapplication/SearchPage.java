@@ -16,13 +16,14 @@ import java.util.List;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import model.Request;
+import model.Tutor;
 
 public class SearchPage extends AppCompatActivity {
     private Button save;
     private Button search;
     private ListView list;
     private SearchAdapter adapter;
-    private List<Request> Requests = new ArrayList<>();
+    private List<Tutor> Requests = new ArrayList<>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +46,9 @@ public class SearchPage extends AppCompatActivity {
             }
         });
     }
-    private class SearchAdapter extends ArrayAdapter<Request> {
-        List<Request> Groups;
-        public SearchAdapter(Context context, int resource, List<Request> objects) {
+    private class SearchAdapter extends ArrayAdapter<Tutor> {
+        List<Tutor> Groups;
+        public SearchAdapter(Context context, int resource, List<Tutor> objects) {
             super(context, resource, objects);
             this.Groups = objects;
         }
@@ -60,10 +61,10 @@ public class SearchPage extends AppCompatActivity {
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
-            Request gp = Groups.get(position);
-            name.setText(gp.getTutee().getName());
-            course.setText(gp.getSubject());
-            period.setText(String.valueOf(gp.getTime()));
+            Tutor tutor = Groups.get(position);
+            name.setText(tutor.getName());
+            course.setText(tutor.getSubjectNew());
+            period.setText(String.valueOf(tutor.getTimeNew()));
             return convertView;
         }
     }
