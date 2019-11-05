@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i;
                 if(tutee){
                     // 1. verify tutee in database
                     // 2. sign into firebase
@@ -73,14 +72,16 @@ public class MainActivity extends AppCompatActivity {
                                  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                  if (user.isEmailVerified())
                                  {
-                                     finish();
+                                     Toast.makeText(getApplicationContext(), "email verified", Toast.LENGTH_SHORT).show();
+                                     Intent i = new Intent(getApplicationContext(),TuteeHome.class);
+                                     startActivity(i);
                                  } else {
                                      FirebaseAuth.getInstance().signOut();
+                                     Toast.makeText(getApplicationContext(), "please verify email", Toast.LENGTH_SHORT).show();
                                  }
                              }
                          }
                      });
-                    i = new Intent(getApplicationContext(),TuteeHome.class);
                 }
                 else{
                     // 1. verify tutor in database
@@ -96,15 +97,16 @@ public class MainActivity extends AppCompatActivity {
                                 if (user.isEmailVerified())
                                 {
                                     finish();
+                                    Intent i = new Intent(getApplicationContext(),TutorHome.class);
+                                    startActivity(i);
                                 } else {
                                     FirebaseAuth.getInstance().signOut();
+                                    Toast.makeText(getApplicationContext(), "please verify email", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
                     });
-                    i = new Intent(getApplicationContext(),TutorHome.class);
                 }
-                startActivity(i);
             }
         });
         Reg.setOnClickListener(new View.OnClickListener() {
