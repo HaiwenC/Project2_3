@@ -36,9 +36,8 @@ public class updateProfile extends AppCompatActivity {
         courseSpinner = findViewById(R.id.courseSpinner);
         CV = findViewById(R.id.calendarView);
         DayOfWeek = findViewById(R.id.textView3);
-        saveBut = findViewById(R.id.saveButton);
+        saveBut = findViewById(R.id.SaveBut);
         timeSpinner = findViewById(R.id.spinnerTimePeriod);
-
         CV.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
@@ -67,7 +66,6 @@ public class updateProfile extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
 }
