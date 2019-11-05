@@ -13,11 +13,11 @@ import java.util.*;
 
 public class Tutor extends Student {
 
-    private ArrayList<Session> sectionsTeaching;
-
-    private ArrayList<Integer> week;
-    private ArrayList<Integer> time;
-    private ArrayList<String> subject;
+//    private ArrayList<Session> sectionsTeaching;
+//
+//    private ArrayList<Integer> week;
+//    private ArrayList<Integer> time;
+//    private ArrayList<String> subject;
 
     private int tutor_day;
     private int tutor_time;
@@ -69,7 +69,7 @@ public class Tutor extends Student {
 
     public Tutor(String studentID, String email, String name, String username, String password) {
         super(studentID, email, name, username, password);
-        sectionsTeaching = new ArrayList<Session>();
+//        sectionsTeaching = new ArrayList<Session>();
         numRatings=0;
         totalRating=0;
 //        reviews = "";
@@ -84,62 +84,62 @@ public class Tutor extends Student {
         totalRating += rate;
         numRatings++;
     }
+//
+//    public ArrayList<Integer> getDay() {
+//        return week;
+//    }
+//
+//    public ArrayList<Integer> getTime() {
+//        return time;
+//    }
+//
+//    public ArrayList<String> getSubject() {
+//        return subject;
+//    }
+//
+//    public void setTime(ArrayList<Integer> time) {
+//        this.time = time;
+//    }
+//
+//    public void setSubject(ArrayList<String> subject) {
+//        this.subject = subject;
+//    }
+//
+//    public void setWeek(ArrayList<Integer> week) {
+//        this.week = week;
+//    }
+//
+//    public void addObject(int W, int T, String S){
+//
+//        week.add(W);
+//        time.add(T);
+//        subject.add(S);
+//    }
+//
+//    public void removeObject(int index){
+//        week.remove(index);
+//        time.remove(index);
+//        subject.remove(index);
+//    }
 
-    public ArrayList<Integer> getDay() {
-        return week;
-    }
-
-    public ArrayList<Integer> getTime() {
-        return time;
-    }
-
-    public ArrayList<String> getSubject() {
-        return subject;
-    }
-
-    public void setTime(ArrayList<Integer> time) {
-        this.time = time;
-    }
-
-    public void setSubject(ArrayList<String> subject) {
-        this.subject = subject;
-    }
-
-    public void setWeek(ArrayList<Integer> week) {
-        this.week = week;
-    }
-
-    public void addObject(int W, int T, String S){
-
-        week.add(W);
-        time.add(T);
-        subject.add(S);
-    }
-
-    public void removeObject(int index){
-        week.remove(index);
-        time.remove(index);
-        subject.remove(index);
-    }
-
-
-    public boolean addSections(Session s, int time, int week) {
-        if (sectionsTeaching.contains(s)) {return false;}
-        else {
-            for (int i = 0 ; i < requestsReceived.size(); i++ ){
-                if(requestsReceived.get(i).getDayOfWeek() == week && requestsReceived.get(i).getTime() == time) {
-                    requestsReceived.get(i).rejectRequest();
-                    removeObject(i);
-                }
-            }
-            sectionsTeaching.add(s);
-        }
-        return true;
-    }
-    public boolean removeSections(Session s) {
-       return sectionsTeaching.remove(s);
-        // returns true if removed, false otherwise
-    }
+//
+//    public boolean addSections(Session s, int time, int week) {
+//        if (sectionsTeaching.contains(s)) {return false;}
+//        else {
+//            for (int i = 0 ; i < requestsReceived.size(); i++ ){
+//                if(requestsReceived.get(i).getDayOfWeek() == week && requestsReceived.get(i).getTime() == time) {
+//                    requestsReceived.get(i).rejectRequest();
+//                    removeObject(i);
+//                }
+//            }
+//            sectionsTeaching.add(s);
+//        }
+//        return true;
+//    }
+//    public boolean removeSections(Session s) {
+//       return sectionsTeaching.remove(s);
+//        // returns true if removed, false otherwise
+//    }
 
     public void addReview(String newReview){
         reviews.add(newReview);
