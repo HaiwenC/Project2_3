@@ -42,6 +42,8 @@ public class SearchPage extends AppCompatActivity {
     private ListView list;
     private SearchAdapter adapter;
     private String subject;
+    private int time;
+    private int day;
     //    private EditText subject;
     private List<Tutor> Requests = new ArrayList<>();
     @Override
@@ -52,6 +54,8 @@ public class SearchPage extends AppCompatActivity {
         save = findViewById(R.id.SaveBut);
         search = findViewById(R.id.SearchBut);
         subject = "Math";
+        time    = 14;
+        day     = 2;
 //        subject = findViewById(R.id.Subject);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +79,9 @@ public class SearchPage extends AppCompatActivity {
                                 String name      = "";
                                 String username  = "";
                                 String email     = "";
+                                String sub       = "";
+                                int ava_time     = -1;
+                                int ava_day      = -1;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d("qqqq", document.getId() + " => " + document.getData());
@@ -84,8 +91,13 @@ public class SearchPage extends AppCompatActivity {
                                         name      = document.getData().get("name").toString();
                                         username  = document.getData().get("username").toString();
                                         email  = document.getData().get("email").toString();
+                                        sub    = document.getData().get("subject").toString();
+                                        ava_day = Integer.parseInt(document.getData().get("weekNew").toString());
+                                        ava_time = Integer.parseInt(document.getData().get("timeNew").toString());
                                         Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
-                                        Requests.add(tutorNew);
+                                        if ((subject.equals(sub)) && (time==ava_time) && (day == ava_day)){
+                                            Requests.add(tutorNew);
+                                        }
                                     }
                                     if (isExist) {
                                         Toast.makeText(getApplicationContext(), "This user is existed", Toast.LENGTH_LONG).show();
