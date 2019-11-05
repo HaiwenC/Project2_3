@@ -10,36 +10,105 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import model.Request;
+import model.Session;
 import model.Tutee;
 import model.Tutor;
+
+import static csci310.myapplication.MainActivity.sessionRefe;
+import static csci310.myapplication.MainActivity.tutorRefe;
 
 
 public class SessionHistory extends AppCompatActivity {
     private ListView list;
     private SessionAdapter adapter;
-    public static List<Request> groups = new ArrayList<Request>();
+    private String tutorName;
+    public static List<Session> groups = new ArrayList<Session>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sessionhistory);
         list = findViewById(R.id.sessionHistory);
+        tutorName = "Math";
+
+
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Query query = sessionRefe.whereEqualTo("tutorName", tutorName);
+                query.get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                boolean isExist = false;
+////                                String password = "";
+////                                String studentID = "";
+////                                String name      = "";
+////                                String username  = "";
+////                                String email     = "";
+                                int day = -1;
+                                String review = "";
+                                String subject= "";
+                                int time = -1;
+                                String tuteeName = "";
+                                String tutorName = "";
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Log.d("qqqq", document.getId() + " => " + document.getData());
+                                        isExist = true;
+                                        day = (int)document.getData().get("day");
+                                        time = (int)document.getData().get("time");
+                                        review = document.getData().get("review").toString();
+                                        subject      = document.getData().get("subject").toString();
+                                        tuteeName  = document.getData().get("tuteeName").toString();
+                                        tutorName  = document.getData().get("tutorName").toString();
+//                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
+                                        Session curSession = new Session(tutorName,tuteeName,subject,day,time);
+                                        groups.add(curSession);
+                                    }
+                                    if (isExist) {
+                                        Toast.makeText(getApplicationContext(), "This session is existed", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        CollectionReference citiesRefInside;
+                                        Toast.makeText(getApplicationContext(), "session added", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } else {
+                                    Log.d("qqqq","Error, can't run query");
+                                }
+                            }
+                        });
+            }
+        });
+
+
+
+
+
         Log.d("debug listview", list.toString());
-        groups.add(new Request(new Tutee("1", "1", "Beiyou","1", "aaaaaaaaa"),
-                new Tutor("1", "1", "!", "1", "aaaaaaaaa"), "csci109", 1 ,8, 9));
+//        groups.add(new Session());
         adapter = new SessionAdapter(getApplicationContext(), 0, groups);
         //Log.d("debug adapter", adapter.toString());
         list.setAdapter(adapter);
     }
-    private class SessionAdapter extends ArrayAdapter<Request> {
-        List<Request> Groups;
-        public SessionAdapter(Context context, int resource, List<Request> objects) {
+    private class SessionAdapter extends ArrayAdapter<Session> {
+        List<Session> Groups;
+        public SessionAdapter(Context context, int resource, List<Session> objects) {
             super(context, resource, objects);
             this.Groups = objects;
         }
@@ -56,8 +125,8 @@ public class SessionHistory extends AppCompatActivity {
             Button reject = convertView.findViewById(R.id.reject);
             accept.setVisibility(View.INVISIBLE);
             reject.setVisibility(View.INVISIBLE);
-            Request gp = Groups.get(position);
-            name.setText(gp.getTutee().getName());
+            Session gp = Groups.get(position);
+            name.setText(gp.getTutee());
             course.setText(gp.getSubject());
             period.setText(String.valueOf(gp.getTime()));
             return convertView;

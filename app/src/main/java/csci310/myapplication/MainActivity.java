@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public static CollectionReference requestRefe = db.collection("requests");
     public static CollectionReference sessionRefe = db.collection("sessions");
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
