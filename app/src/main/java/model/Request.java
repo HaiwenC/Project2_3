@@ -53,5 +53,11 @@ public class Request {
     public String getTutee() {return tuteeUsername;}
     public String getSubject(){return this.subject;}
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
