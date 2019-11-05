@@ -30,7 +30,7 @@ public class Request {
 //        Session newSession = new Sections(timeBegin, timeEnd);
         Session newSession = new Session(tutor.getName(), tutee.getName(), subject, dayOfWeek, timeBegin);
         tutee.addSession(newSession);
-        tutor.addSections(newSession, dayOfWeek, timeBegin);
+//        tutor.addSections(newSession, dayOfWeek, timeBegin);
         status = "accepted";
         //TODO add session to database
     }

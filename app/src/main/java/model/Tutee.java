@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tutee extends Student {
-    private ArrayList<Session> sectionsLearning;
+//    private ArrayList<Session> sectionsLearning;
     private String last_subject;
     private int last_day;
     private int last_time;
 
     public Tutee(String studentID, String email, String name, String username, String password) {
         super(studentID, email, name, username, password);
-        sectionsLearning = new ArrayList<Session>();
+//        sectionsLearning = new ArrayList<Session>();
         last_subject = "";
         last_day = -1;
         last_time = -1;
@@ -48,9 +48,9 @@ public class Tutee extends Student {
 //
 //    }
 
-    public void addSession(Session newClass){
-        sectionsLearning.add(newClass);
-    }
+//    public void addSession(Session newClass){
+//        sectionsLearning.add(newClass);
+//    }
 
     //when the send request button is clicked on a request
     //creates and returns a request object
