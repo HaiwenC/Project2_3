@@ -161,4 +161,19 @@ public class Tutor extends Student {
         this.requestsReceived = requestsReceived;
     }
 
+    public double getRatingTotal() {
+        return ratingTotal;
+    }
+
+    public void setRatingTotal(double ratingTotal) {
+        this.ratingTotal = ratingTotal;
+    }
+
+    public int getNumRatings() {
+        return numRatings;
+    }
+
+    public void setNumRatings(int numRatings) {
+        this.numRatings = numRatings;
+    }
 }
