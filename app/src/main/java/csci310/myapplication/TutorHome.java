@@ -134,7 +134,9 @@ public class TutorHome extends AppCompatActivity {
                                 isExist = true;
                                 Request requestNew = new Request(document.getData().get("tuteeUsername").toString(),document.getData().get("tutorUsername").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("day").toString()),Integer.parseInt(document.getData().get("time").toString()));
                                 requestNew.setStatus(document.getData().get("status").toString());
-                                groups.add(requestNew);
+                                if (requestNew.getStatus().equals("available")){
+                                    groups.add(requestNew);
+                                }
                             }
                             if (!isExist) {
                                 Toast.makeText(getApplicationContext(), "Session does not exist", Toast.LENGTH_LONG).show();
