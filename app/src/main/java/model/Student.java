@@ -29,8 +29,8 @@ abstract class Student {
     private String username;
     private String password;
 //    private Calendar calendar;
-    List<Request> requestList;
-    List<Session> sessionList;
+//    List<Request> requestList;
+//    List<Session> sessionList;
 
 
     Student(String sID, String e, String n, String un, String pass) {
@@ -79,36 +79,36 @@ abstract class Student {
 //
 //        this.calendar = calendar;
 //    }
-    /**
-     * get requestList
-     */
-    public List<Request> getRequestList() {
-
-        return requestList;
-    }
-    /**
-     * set requestList
-     * @param requestList: The new calendar to set
-     */
-    public void setRequestList(List<Request> requestList) {
-
-        this.requestList = requestList;
-    }
-    /**
-     * get sessionList
-     */
-    public List<Session> getSessionList() {
-
-        return sessionList;
-    }
-    /**
-     * set sessionList
-     * @param sessionList: The new calendar to set
-     */
-    public void setSessionList(List<Session> sessionList) {
-
-        this.sessionList = sessionList;
-    }
+//    /**
+//     * get requestList
+//     */
+//    public List<Request> getRequestList() {
+//
+//        return requestList;
+//    }
+//    /**
+//     * set requestList
+//     * @param requestList: The new calendar to set
+//     */
+//    public void setRequestList(List<Request> requestList) {
+//
+//        this.requestList = requestList;
+//    }
+//    /**
+//     * get sessionList
+//     */
+//    public List<Session> getSessionList() {
+//
+//        return sessionList;
+//    }
+//    /**
+//     * set sessionList
+//     * @param sessionList: The new calendar to set
+//     */
+//    public void setSessionList(List<Session> sessionList) {
+//
+//        this.sessionList = sessionList;
+//    }
     /**
      * get email
      */
