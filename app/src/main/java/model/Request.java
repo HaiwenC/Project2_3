@@ -9,7 +9,7 @@ public class Request {
 //    private int index;
     private String status;
 
-    public Request(Tutee tutee, Tutor tutor, String className, int day ,int begin, int ind){
+    public Request(Tutee tutee, Tutor tutor, String className, int day ,int begin){
         this.tutee = tutee;
         this.tutor = tutor;
         this.subject = className;
