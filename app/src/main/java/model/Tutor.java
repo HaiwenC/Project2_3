@@ -21,7 +21,7 @@ public class Tutor extends Student {
 
     private int[] weekNew;
     private int[] timeNew;
-    private String[] subjectNew;
+    private String subjectNew;
 
     private ArrayList<Request> requestsReceived;
 
@@ -41,12 +41,12 @@ public class Tutor extends Student {
         this.timeNew = timeNew;
     }
 
-    public String[] getSubjectNew() {
+    public String getSubjectNew() {
         return subjectNew;
     }
 
 
-    public void setSubjectNew(String[] subjectNew) {
+    public void setSubjectNew(String subjectNew) {
         this.subjectNew = subjectNew;
     }
 //
