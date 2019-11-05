@@ -99,7 +99,7 @@ public class SearchPage extends AppCompatActivity {
                                         name      = document.getData().get("name").toString();
                                         username  = document.getData().get("username").toString();
                                         email  = document.getData().get("email").toString();
-                                        sub    = document.getData().get("subject").toString();
+                                        sub    = document.getData().get("subjectNew").toString();
                                         ava_day = Integer.parseInt(document.getData().get("weekNew").toString());
                                         ava_time = Integer.parseInt(document.getData().get("timeNew").toString());
                                         Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
