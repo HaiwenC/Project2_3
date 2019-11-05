@@ -13,7 +13,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
             android:paddingEnd="8dp"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:paddingStart="8dp">
 
             <TextView
                 android:id="@+id/RequestName"
@@ -62,21 +63,25 @@
                 android:layout_marginLeft="10dp"
                 android:text="FRI 8:00-9:00"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_toEndOf="@+id/RequestPeriod"
+                android:layout_marginStart="10dp" />
 
             <Button
                 android:id="@+id/Apply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/reject"
-                android:text="Accept" />
+                android:text="Accept"
+                android:layout_toEndOf="@+id/reject" />
 
             <Button
                 android:id="@+id/reject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="160dp"
-                android:text="Reject" />
+                android:text="Reject"
+                android:layout_marginStart="160dp" />
 
         </RelativeLayout>
 

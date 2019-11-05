@@ -45,10 +45,26 @@
         android:id="@+id/EditUsername"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="textLongMessage"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/TextRegistration"
         app:layout_constraintTop_toBottomOf="@+id/TextRegistration" />
 
+<<<<<<< Updated upstream
+=======
+    <EditText
+        android:id="@+id/EditEmailAddress"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/EditUsername"
+        app:layout_constraintTop_toBottomOf="@+id/EditUsername" />
+
+>>>>>>> Stashed changes
 
 </androidx.constraintlayout.widget.ConstraintLayout>

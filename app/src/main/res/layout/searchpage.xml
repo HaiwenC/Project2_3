@@ -13,7 +13,8 @@
         android:layout_marginTop="8dp"
         android:entries="@array/Day"
         app:layout_constraintStart_toStartOf="@+id/TextRegistration"
-        app:layout_constraintTop_toBottomOf="@+id/courseName" />
+        app:layout_constraintTop_toBottomOf="@+id/courseName"
+        android:layout_marginStart="8dp" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/periodSelect"
@@ -23,7 +24,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/TextRegistration"
-        app:layout_constraintTop_toBottomOf="@+id/DayTime" />
+        app:layout_constraintTop_toBottomOf="@+id/DayTime"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/TextRegistration"
@@ -48,7 +50,8 @@
         android:text="CourseName"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextRegistration" />
+        app:layout_constraintTop_toBottomOf="@+id/TextRegistration"
+        android:layout_marginStart="8dp" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/CourseSelect"
@@ -59,7 +62,7 @@
         android:entries="@array/Course"
         app:layout_constraintStart_toStartOf="@+id/TextRegistration"
         app:layout_constraintTop_toBottomOf="@+id/TextRegistration"
-        />
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/DayTime"
@@ -70,7 +73,8 @@
         android:text="Day"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseName" />
+        app:layout_constraintTop_toBottomOf="@+id/courseName"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/TimePeriod"
@@ -81,7 +85,8 @@
         android:text="TimePeriod"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DayTime" />
+        app:layout_constraintTop_toBottomOf="@+id/DayTime"
+        android:layout_marginStart="8dp" />
 
     <Button
         android:id="@+id/SearchBut"
