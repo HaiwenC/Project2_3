@@ -72,6 +72,7 @@ public class SearchPage extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Requests.clear();
                 subject = spinner_subject.getSelectedItem().toString();
                 day    = spinner_day.getSelectedItemPosition();
                 period  = Integer.valueOf(spinner_period.getSelectedItem().toString().substring(0,2));
