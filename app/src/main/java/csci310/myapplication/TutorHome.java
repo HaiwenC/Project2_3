@@ -113,7 +113,7 @@ public class TutorHome extends AppCompatActivity {
                             if (!isExist) {
                                 Toast.makeText(getApplicationContext(), "Session does not exist", Toast.LENGTH_LONG).show();
                             } else {
-
+                                adapter.notifyDataSetChanged();
                             }
                         } else {
                             Log.d("qqqq","Error, can't run query");
