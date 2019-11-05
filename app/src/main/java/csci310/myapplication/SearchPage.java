@@ -76,7 +76,7 @@ public class SearchPage extends AppCompatActivity {
                 day    = spinner_day.getSelectedItemPosition();
                 period  = Integer.valueOf(spinner_period.getSelectedItem().toString().substring(0,2));
                 Log.d("debugSearch", subject+ String.valueOf(day) + " " + String.valueOf(period));
-                Query query = tutorRefe.whereEqualTo("subject", subject);
+                Query query = tutorRefe.whereEqualTo("subjectNew", subject);
                 query.get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -103,6 +103,9 @@ public class SearchPage extends AppCompatActivity {
                                         ava_day = Integer.parseInt(document.getData().get("weekNew").toString());
                                         ava_time = Integer.parseInt(document.getData().get("timeNew").toString());
                                         Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
+                                        tutorNew.setSubjectNew(subject);
+                                        tutorNew.setTimeNew(ava_time);
+                                        tutorNew.setWeekNew(ava_day);
                                         if ((subject.equals(sub)) && (period==ava_time) && (day == ava_day)){
                                             Requests.add(tutorNew);
                                         }
@@ -137,10 +140,20 @@ public class SearchPage extends AppCompatActivity {
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
-            Tutor tutor = Groups.get(position);
+            Button apply = convertView.findViewById(R.id.Apply);
+            final Tutor tutor = Groups.get(position);
             name.setText(tutor.getName());
             course.setText(tutor.getSubjectNew());
             period.setText(String.valueOf(tutor.getTimeNew()));
+            apply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Request r = new Request(MainActivity.tuteeInfo.getName(), tutor.getName(), tutor.getSubjectNew(), tutor.getWeekNew() ,tutor.getTimeNew());
+                    MainActivity.requestRefe.document(tutor.getName()+MainActivity.tuteeInfo.getName()).set(r);
+                    view.setEnabled(false);
+                    Toast.makeText(getApplicationContext(), "application sent", Toast.LENGTH_SHORT).show();
+                }
+            });
             return convertView;
         }
     }
