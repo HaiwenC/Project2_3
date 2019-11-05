@@ -38,6 +38,7 @@ import static csci310.myapplication.MainActivity.tuteeRefe;
 import static csci310.myapplication.MainActivity.tutorRefe;
 
 public class SearchPage extends AppCompatActivity {
+    public static int REQUEST_CODE = 1;
     private Button save;
     private Button search;
     private ListView list;
