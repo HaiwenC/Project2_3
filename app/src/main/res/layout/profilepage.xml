@@ -95,11 +95,11 @@
         android:id="@+id/SaveBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginBottom="4dp"
         android:text="Update Profile"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -124,7 +124,7 @@
 
     <TextView
         android:id="@+id/ProfileDayOfWeek"
-        android:layout_width="114dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="MON"
@@ -146,9 +146,11 @@
         android:id="@+id/returnToHome"
         android:layout_width="155dp"
         android:layout_height="50dp"
-        android:text="Return"
-        tools:layout_editor_absoluteX="240dp"
-        tools:layout_editor_absoluteY="677dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,7 +60,7 @@ public class updateProfile extends AppCompatActivity {
                 MainActivity.tutorInfo.setSubjectNew(course);
                 final String time = timeSpinner.getSelectedItem().toString();
                 MainActivity.tutorInfo.setTimeNew(Integer.valueOf(time.substring(0, 2)));
-                MainActivity.tutorInfo.setWeekNew(dayOfWeek);
+                MainActivity.tutorInfo.setWeekNew((dayOfWeek+5)%7);
                 MainActivity.tutorInfo.setName(name.getText().toString());
                 MainActivity.tutorRefe.document(MainActivity.tutorInfo.getUsername()).set(MainActivity.tutorInfo);
                 //MainActivity.tuteeRefe.document(MainActivity.tuteeInfo.getUsername()).set(MainActivity.tuteeInfo);

@@ -18,7 +18,7 @@ public class TutorProfile extends AppCompatActivity {
     volatile private TextView Dayofweek;
     volatile private TextView email;
     volatile private TextView period;
-    private String[] week = new String[]{"SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"};
+    private String[] week = new String[]{"MON", "TUE", "WED", "THUR", "FRI", "SAT","SUN"};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
