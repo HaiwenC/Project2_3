@@ -16,6 +16,8 @@ public class TutorProfile extends AppCompatActivity {
     private TextView Dayofweek;
     private TextView email;
     private TextView period;
+    private String[] week = new String[]{"SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"};
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,8 @@ public class TutorProfile extends AppCompatActivity {
             }
         });
         name.setText(MainActivity.tutorInfo.getName());
-        courseName.setText(MainActivity.tutorInfo.getSubject().get(0));
-        period.setText(MainActivity.tutorInfo.getTime());
+        courseName.setText(MainActivity.tutorInfo.getSubjectNew());
+        period.setText(MainActivity.tutorInfo.getTimeNew());
+        Dayofweek.setText(week[MainActivity.tutorInfo.getWeekNew()%7]);
     }
 }

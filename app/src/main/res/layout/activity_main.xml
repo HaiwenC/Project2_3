@@ -27,12 +27,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="login_emailAddress"
+        android:autofillHints=""
+        android:hint="emailAddress"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextScheduleMe"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/TextScheduleMe" />
 
     <EditText
         android:id="@+id/EditPassword"
@@ -41,12 +41,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="login_password"
+        android:autofillHints=""
+        android:hint="password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditUsername"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/EditUsername" />
 
     <Button
         android:id="@+id/ButLogin"
@@ -98,12 +98,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:checked="true"
-            android:text="choice_tutee" />
+            android:text="tutee" />
 
         <RadioButton
             android:id="@+id/radioTutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="choice_tutor" />
+            android:text="tutor" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
