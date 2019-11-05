@@ -19,35 +19,35 @@ public class Tutor extends Student {
     private ArrayList<Integer> time;
     private ArrayList<String> subject;
 
-    private int weekNew;
-    private int timeNew;
-    private String subjectNew;
+    private int tutor_day;
+    private int tutor_time;
+    private String tutor_subject;
 
     private ArrayList<Request> requestsReceived;
 
     public int getWeekNew() {
-        return weekNew;
+        return tutor_day;
     }
 
     public void setWeekNew(int weekNew) {
-        this.weekNew = weekNew;
+        this.tutor_day = weekNew;
     }
 
     public int getTimeNew() {
-        return timeNew;
+        return tutor_time;
     }
 
     public void setTimeNew(int timeNew) {
-        this.timeNew = timeNew;
+        this.tutor_time = timeNew;
     }
 
     public String getSubjectNew() {
-        return subjectNew;
+        return tutor_subject;
     }
 
 
     public void setSubjectNew(String subjectNew) {
-        this.subjectNew = subjectNew;
+        this.tutor_subject = subjectNew;
     }
 //
 //    public void addTime(int week, int startTime){
@@ -63,7 +63,7 @@ public class Tutor extends Student {
 //        calendars.get(week).remove(newTime);
 //    }
 
-    private double ratingTotal;
+    private double totalRating;
     private int numRatings;
     private ArrayList<String> reviews;
 
@@ -71,17 +71,17 @@ public class Tutor extends Student {
         super(studentID, email, name, username, password);
         sectionsTeaching = new ArrayList<Session>();
         numRatings=0;
-        ratingTotal=0;
+        totalRating=0;
 //        reviews = "";
     }
 
 
     public double getRating(){
-        return ratingTotal/numRatings;
+        return totalRating/numRatings;
     }
 
     public void addRating(int rate){
-        ratingTotal += rate;
+        totalRating += rate;
         numRatings++;
     }
 
@@ -162,11 +162,11 @@ public class Tutor extends Student {
     }
 
     public double getRatingTotal() {
-        return ratingTotal;
+        return totalRating;
     }
 
     public void setRatingTotal(double ratingTotal) {
-        this.ratingTotal = ratingTotal;
+        this.totalRating = ratingTotal;
     }
 
     public int getNumRatings() {

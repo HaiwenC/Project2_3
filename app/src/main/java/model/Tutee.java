@@ -6,40 +6,40 @@ import java.util.Map;
 
 public class Tutee extends Student {
     private ArrayList<Session> sectionsLearning;
-    private String lastSearch_subject;
-    private int lastSearch_day;
-    private int lastSearch_time;
+    private String last_subject;
+    private int last_day;
+    private int last_time;
 
     public Tutee(String studentID, String email, String name, String username, String password) {
         super(studentID, email, name, username, password);
         sectionsLearning = new ArrayList<Session>();
-        lastSearch_subject = "";
-        lastSearch_day = -1;
-        lastSearch_time = -1;
+        last_subject = "";
+        last_day = -1;
+        last_time = -1;
     }
 
     public String getLastSearch_subject() {
-        return lastSearch_subject;
+        return last_subject;
     }
 
     public void setLastSearch_subject(String lastSearch_subject) {
-        this.lastSearch_subject = lastSearch_subject;
+        this.last_subject = lastSearch_subject;
     }
 
     public int getLastSearch_day() {
-        return lastSearch_day;
+        return last_day;
     }
 
     public void setLastSearch_day(int lastSearch_day) {
-        this.lastSearch_day = lastSearch_day;
+        this.last_day = lastSearch_day;
     }
 
     public int getLastSearch_time() {
-        return lastSearch_time;
+        return last_time;
     }
 
     public void setLastSearch_time(int lastSearch_time) {
-        this.lastSearch_time = lastSearch_time;
+        this.last_time = lastSearch_time;
     }
 //    //pulls data from database, search the list by time, and return a list of matching results
 //    private ArrayList<Calendar> SearchTutor(String timeBegin, String timeEnd){
