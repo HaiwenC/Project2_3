@@ -129,9 +129,6 @@ public class MainActivity extends AppCompatActivity {
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 Intent i = new Intent(getApplicationContext(),Registration.class);
                 startActivity(i);
             }
