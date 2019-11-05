@@ -28,7 +28,7 @@ public class TuteeHome extends AppCompatActivity {
     private Button session;
     private ListView list;
     private RequestAdapter adapter;
-    private List<Request>groups = new ArrayList<>();
+    public static List<Request>groups = new ArrayList<>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

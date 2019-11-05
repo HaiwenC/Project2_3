@@ -153,6 +153,7 @@ public class SearchPage extends AppCompatActivity {
                     Request r = new Request(MainActivity.tuteeInfo.getName(), tutor.getName(), tutor.getSubjectNew(), tutor.getWeekNew() ,tutor.getTimeNew());
                     MainActivity.requestRefe.document(tutor.getName()+MainActivity.tuteeInfo.getName()).set(r);
                     view.setEnabled(false);
+                    TuteeHome.groups.add(r);
                     Toast.makeText(getApplicationContext(), "application sent", Toast.LENGTH_SHORT).show();
                 }
             });
