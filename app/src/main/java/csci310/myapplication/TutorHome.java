@@ -31,10 +31,12 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import model.Request;
+import model.Session;
 import model.Tutee;
 import model.Tutor;
 
 import static csci310.myapplication.MainActivity.requestRefe;
+import static csci310.myapplication.MainActivity.sessionRefe;
 
 
 public class TutorHome extends AppCompatActivity {
@@ -90,11 +92,16 @@ public class TutorHome extends AppCompatActivity {
             TextView period = convertView.findViewById(R.id.TimePeriod);
             Button accept = convertView.findViewById(R.id.reject);
             Button reject = convertView.findViewById(R.id.Apply);
+            final Request gp = Groups.get(position);
             accept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     groups.remove(position);
                     adapter.notifyDataSetChanged();
+                    gp.setStatus("accepted");
+                    requestRefe.document(gp.getTutor()+gp.getTutee()).set(gp);
+                    Session sessionNew = new Session(gp.getTutor(),gp.getTutee(),gp.getSubject(),gp.getDayOfWeek(),gp.getTime());
+                    sessionRefe.document(gp.getTutor()+gp.getTutee()).set(sessionNew);
                 }
             });
             reject.setOnClickListener(new View.OnClickListener() {
@@ -102,9 +109,11 @@ public class TutorHome extends AppCompatActivity {
                 public void onClick(View view) {
                     groups.remove(position);
                     adapter.notifyDataSetChanged();
+                    gp.setStatus("rejected");
+                    requestRefe.document(gp.getTutor()+gp.getTutee()).set(gp);
                 }
             });
-            Request gp = Groups.get(position);
+
             name.setText(gp.getTutee());
             course.setText(gp.getSubject());
             period.setText(String.valueOf(gp.getTime()));
@@ -124,6 +133,7 @@ public class TutorHome extends AppCompatActivity {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());
                                 isExist = true;
                                 Request requestNew = new Request(document.getData().get("tuteeUsername").toString(),document.getData().get("tutorUsername").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("day").toString()),Integer.parseInt(document.getData().get("time").toString()));
+                                requestNew.setStatus(document.getData().get("status").toString());
                                 groups.add(requestNew);
                             }
                             if (!isExist) {
