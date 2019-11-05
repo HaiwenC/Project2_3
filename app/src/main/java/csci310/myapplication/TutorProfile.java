@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TutorProfile extends AppCompatActivity {
     private Button update;
+    private Button returnToHome;
     volatile private TextView name;
     volatile private TextView courseName;
     volatile private TextView Dayofweek;
@@ -29,6 +30,14 @@ public class TutorProfile extends AppCompatActivity {
         Dayofweek = findViewById(R.id.ProfileDayOfWeek);
         period = findViewById(R.id.ProfileTimePeriod);
         update = findViewById(R.id.SaveBut);
+        returnToHome = findViewById(R.id.returnToHome);
+        returnToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), TutorHome.class);
+                startActivity(i);
+            }
+        });
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

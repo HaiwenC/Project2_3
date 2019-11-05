@@ -95,9 +95,11 @@
         android:id="@+id/SaveBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:text="Update Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -139,6 +141,14 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/ProfileEmail"
         app:layout_constraintTop_toBottomOf="@+id/ProfileDayOfWeek" />
+
+    <Button
+        android:id="@+id/returnToHome"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:text="Return"
+        tools:layout_editor_absoluteX="240dp"
+        tools:layout_editor_absoluteY="677dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
