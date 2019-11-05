@@ -9,16 +9,23 @@
         android:id="@+id/EditPassword"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBaseline_toBaselineOf="@+id/RegPassword"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/EditEmail"
         android:layout_width="134dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:autofillHints=""
+        android:hint="email"
+        android:inputType="textEmailAddress"
         app:layout_constraintBaseline_toBaselineOf="@+id/TimePeriod"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -26,15 +33,14 @@
         android:id="@+id/TextRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Registration"
+        android:layout_marginStart="8dp"
+        android:text="@string/registration"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="48dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/courseName"
@@ -42,10 +48,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
-        android:text="Name"
+        android:text="@string/name"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/username" />
+        app:layout_constraintTop_toBottomOf="@id/username"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/TimePeriod"
@@ -53,10 +60,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Email address"
+        android:text="@string/email_address"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseName" />
+        app:layout_constraintTop_toBottomOf="@+id/courseName"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/RegPassword"
@@ -64,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:text="Password"
+        android:text="@string/password"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TimePeriod" />
@@ -75,16 +83,20 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
-        android:text="Confirm password"
+        android:text="@string/confirm_password"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/RegPassword"
+        android:layout_marginStart="8dp" />
 
     <EditText
         android:id="@+id/EditName"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:autofillHints=""
+        android:hint="name"
+        android:inputType="textLongMessage"
         app:layout_constraintBaseline_toBaselineOf="@+id/courseName"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -92,7 +104,10 @@
         android:id="@+id/EditConfirmPassword"
         android:layout_width="137dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:autofillHints=""
+        android:hint="password"
         android:inputType="textPassword"
         app:layout_constraintBaseline_toBaselineOf="@+id/RegConfirm"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -115,17 +130,21 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Username"
+        android:text="@string/username"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextRegistration" />
+        app:layout_constraintTop_toBottomOf="@+id/TextRegistration"
+        android:layout_marginStart="8dp" />
 
     <EditText
         android:id="@+id/EditUsername"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:hint="username"
+        android:inputType="textLongMessage"
         app:layout_constraintBaseline_toBaselineOf="@id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

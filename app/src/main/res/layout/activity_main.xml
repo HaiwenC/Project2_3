@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="TutorSC"
+        android:text="@string/tutorsc"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="email address"
+        android:hint="@string/login_emailAddress"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextScheduleMe" />
+        app:layout_constraintTop_toBottomOf="@+id/TextScheduleMe"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/EditPassword"
@@ -39,11 +41,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="password"
+        android:hint="@string/login_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/EditUsername"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/ButLogin"
@@ -70,9 +73,10 @@
         android:id="@+id/imageView3"
         android:layout_width="101dp"
         android:layout_height="133dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/logoimiage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,12 +98,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:checked="true"
-            android:text="Tutee" />
+            android:text="@string/choice_tutee" />
 
         <RadioButton
             android:id="@+id/radioTutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tutor" />
+            android:text="@string/choice_tutor" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
