@@ -19,8 +19,36 @@ public class Tutor extends Student {
     private ArrayList<Integer> time;
     private ArrayList<String> subject;
 
+    private int[] weekNew;
+    private int[] timeNew;
+    private String[] subjectNew;
+
     private ArrayList<Request> requestsReceived;
 
+    public int[] getWeekNew() {
+        return weekNew;
+    }
+
+    public void setWeekNew(int[] weekNew) {
+        this.weekNew = weekNew;
+    }
+
+    public int[] getTimeNew() {
+        return timeNew;
+    }
+
+    public void setTimeNew(int[] timeNew) {
+        this.timeNew = timeNew;
+    }
+
+    public String[] getSubjectNew() {
+        return subjectNew;
+    }
+
+
+    public void setSubjectNew(String[] subjectNew) {
+        this.subjectNew = subjectNew;
+    }
 //
 //    public void addTime(int week, int startTime){
 //        calendars.get(week).add(startTime);
