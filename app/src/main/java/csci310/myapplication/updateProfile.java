@@ -38,6 +38,7 @@ public class updateProfile extends AppCompatActivity {
         DayOfWeek = findViewById(R.id.textView3);
         saveBut = findViewById(R.id.SaveBut);
         timeSpinner = findViewById(R.id.spinnerTimePeriod);
+        DayOfWeek.setText(MainActivity.tutorInfo.getName());
         CV.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
