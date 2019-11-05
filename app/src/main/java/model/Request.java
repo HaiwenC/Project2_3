@@ -4,8 +4,8 @@ public class Request {
     private Tutee tutee;
     private Tutor tutor;
     private String subject;
-    private int dayOfWeek;
-    private int timeBegin;
+    private int day;
+    private int time;
 //    private int index;
     private String status;
 
@@ -13,8 +13,8 @@ public class Request {
         this.tutee = tutee;
         this.tutor = tutor;
         this.subject = className;
-        this.dayOfWeek = day;
-        this.timeBegin = begin;
+        this.day = day;
+        this.time = begin;
 //        this.index = ind;
 
         //possible status: 1:"accepted" 2:"rejected" 3:"available"
@@ -28,7 +28,7 @@ public class Request {
     public void acceptRequest(String newStatus) {
         status = newStatus;
 //        Session newSession = new Sections(timeBegin, timeEnd);
-        Session newSession = new Session(tutor.getName(), tutee.getName(), subject, dayOfWeek, timeBegin);
+        Session newSession = new Session(tutor.getName(), tutee.getName(), subject, day, time);
 //        tutee.addSession(newSession);
 //        tutor.addSections(newSession, dayOfWeek, timeBegin);
         status = "accepted";
@@ -40,11 +40,11 @@ public class Request {
     }
 
     public int getDayOfWeek(){
-        return dayOfWeek;
+        return day;
     }
 
     public int getTime(){
-        return timeBegin;
+        return time;
     }
 
     public Tutor getTutor() {

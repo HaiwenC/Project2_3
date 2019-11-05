@@ -23,7 +23,7 @@ public class Tutor extends Student {
     private int tutor_time;
     private String tutor_subject;
 
-    private ArrayList<Request> requestsReceived;
+//    private ArrayList<Request> requestsReceived;
 
     public int getWeekNew() {
         return tutor_day;
@@ -152,14 +152,14 @@ public class Tutor extends Student {
         // because reviews will also hold session info like rating, student, subject, etc.
         return reviews;
     }
-
-    public ArrayList<Request> getRequestsReceived() {
-        return requestsReceived;
-    }
-
-    public void setRequestsReceived(ArrayList<Request> requestsReceived) {
-        this.requestsReceived = requestsReceived;
-    }
+//
+//    public ArrayList<Request> getRequestsReceived() {
+//        return requestsReceived;
+//    }
+//
+//    public void setRequestsReceived(ArrayList<Request> requestsReceived) {
+//        this.requestsReceived = requestsReceived;
+//    }
 
     public double getRatingTotal() {
         return totalRating;

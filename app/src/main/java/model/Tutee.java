@@ -56,9 +56,9 @@ public class Tutee extends Student {
     //creates and returns a request object
     private void createRequest(Request selectedRequest){
 //        Request add = new Request(getName(), tutorName, className ,timeBegin, timeEnd);
-        ArrayList<Request> updated = selectedRequest.getTutor().getRequestsReceived();
-        updated.add(selectedRequest);
-        selectedRequest.getTutor().setRequestsReceived(updated);
+//        ArrayList<Request> updated = selectedRequest.getTutor().getRequestsReceived();
+//        updated.add(selectedRequest);
+//        selectedRequest.getTutor().setRequestsReceived(updated);
     }
 
     private void writeReview(String tutorName, String review, int rating){
