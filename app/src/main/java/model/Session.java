@@ -3,10 +3,10 @@ package model;
 import java.util.ArrayList;
 
 public class Session {
-    private String tuteeName;
-    private String tutorName;
+    private String tutee;
+    private String tutor;
     private String subject;
-    private int day;
+    private int dayOfWeek;
     private int time;
     private String review;
 
@@ -16,10 +16,10 @@ public class Session {
 //    private ArrayList<String> subjectList;
 
     public Session(String tutorName, String tuteeName, String subject, int dayOfWeek, int time){
-        this.tuteeName = tuteeName;
-        this.tutorName = tutorName;
+        this.tutee = tuteeName;
+        this.tutor = tutorName;
         this.subject = subject;
-        this.day = dayOfWeek;
+        this.dayOfWeek = dayOfWeek;
         this.time = time;
         this.review = "";
 //
@@ -29,19 +29,19 @@ public class Session {
     }
 
     public String getTutee() {
-        return tuteeName;
+        return tutee;
     }
 
     public void setTutee(String tutee) {
-        this.tuteeName = tutee;
+        this.tutee = tutee;
     }
 
     public String getTutor() {
-        return tutorName;
+        return tutor;
     }
 
     public void setTutor(String tutor) {
-        this.tutorName = tutor;
+        this.tutor = tutor;
     }
 
     public String getSubject() {
@@ -53,11 +53,11 @@ public class Session {
     }
 
     public int getDayOfWeek() {
-        return day;
+        return dayOfWeek;
     }
 
     public void setDayOfWeek(int dayOfWeek) {
-        this.day = dayOfWeek;
+        this.dayOfWeek = dayOfWeek;
     }
 
     public int getTime() {

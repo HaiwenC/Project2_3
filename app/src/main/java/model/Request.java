@@ -1,19 +1,19 @@
 package model;
 
 public class Request {
-    private String tuteeUsername;
-    private String tutorUsername;
+    private String tutee;
+    private String tutor;
     private String subject;
-    private int day;
+    private int dayOfWeek;
     private int time;
 //    private int index;
     private String status;
 
     public Request(String tutee, String tutor, String className, int day ,int begin){
-        this.tuteeUsername = tutee;
-        this.tutorUsername = tutor;
+        this.tutee = tutee;
+        this.tutor = tutor;
         this.subject = className;
-        this.day = day;
+        this.dayOfWeek = day;
         this.time = begin;
 //        this.index = ind;
 
@@ -28,7 +28,7 @@ public class Request {
     public void acceptRequest(String newStatus) {
         status = newStatus;
 //        Session newSession = new Sections(timeBegin, timeEnd);
-        Session newSession = new Session(tutorUsername, tuteeUsername, subject, day, time);
+        Session newSession = new Session(tutor, tutee, subject, dayOfWeek, time);
 //        tutee.addSession(newSession);
 //        tutor.addSections(newSession, dayOfWeek, timeBegin);
         status = "accepted";
@@ -40,7 +40,7 @@ public class Request {
     }
 
     public int getDayOfWeek(){
-        return day;
+        return dayOfWeek;
     }
 
     public int getTime(){
@@ -48,9 +48,9 @@ public class Request {
     }
 
     public String getTutor() {
-        return tutorUsername;
+        return tutor;
     }
-    public String getTutee() {return tuteeUsername;}
+    public String getTutee() {return tutee;}
     public String getSubject(){return this.subject;}
 
     public String getStatus() {
