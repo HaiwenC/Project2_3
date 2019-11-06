@@ -119,6 +119,7 @@ public class TuteeHome extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            groups.clear();
                             boolean isExist = false;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());

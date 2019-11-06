@@ -170,8 +170,8 @@ public class SearchPage extends AppCompatActivity {
             apply.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Request r = new Request(MainActivity.tuteeInfo.getName(), tutor.getName(), tutor.getSubjectNew(), tutor.getWeekNew() ,tutor.getTimeNew());
-                    MainActivity.requestRefe.document(tutor.getName()+MainActivity.tuteeInfo.getName()).set(r);
+                    Request r = new Request(MainActivity.tuteeInfo.getUsername(), tutor.getUsername(), tutor.getSubjectNew(), tutor.getWeekNew() ,tutor.getTimeNew());
+                    MainActivity.requestRefe.document(tutor.getUsername()+MainActivity.tuteeInfo.getUsername()).set(r);
                     view.setEnabled(false);
                     TuteeHome.groups.add(r);
                     Toast.makeText(getApplicationContext(), "application sent", Toast.LENGTH_SHORT).show();

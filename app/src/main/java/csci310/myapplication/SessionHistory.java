@@ -51,7 +51,7 @@ public class SessionHistory extends AppCompatActivity {
         //            @Override
         //            public void onClick(View view) {
         Query query;
-        if(MainActivity.tuteeInfo!=null){
+        if(MainActivity.tutee==true){
             query = sessionRefe.whereEqualTo("tutee", MainActivity.tuteeInfo.getUsername());
         }
         else{
@@ -74,10 +74,11 @@ public class SessionHistory extends AppCompatActivity {
                         String tuteeName = "";
                         String tutorName = "";
                         if (task.isSuccessful()) {
+                            groups.clear();
                             for (QueryDocumentSnapshot document: task.getResult()) {
                                 Log.d("stark", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                day = Integer.parseInt(document.getData().get("day").toString());
+                                day = Integer.parseInt(document.getData().get("dayOfWeek").toString());
                                 time = Integer.parseInt(document.getData().get("time").toString());
                                 review = document.getData().get("review").toString();
                                 subject = document.getData().get("subject").toString();

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private Button Reg;
     private Button Login;
     private RadioGroup RButton;
-    private boolean tutee = true;
+    public static boolean tutee = true;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private EditText username;
