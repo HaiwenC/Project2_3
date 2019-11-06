@@ -15,12 +15,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -30,14 +38,25 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import model.Request;
 import model.Tutee;
 import model.Tutor;
 
+import static csci310.myapplication.MainActivity.tuteeInfo;
 import static csci310.myapplication.MainActivity.tuteeRefe;
 import static csci310.myapplication.MainActivity.tutorRefe;
 
 public class SearchPage extends AppCompatActivity {
+    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
+    final private String serverKey = "key=" + "AAAA-ESL_yo:APA91bEiMLxPBAp-OrOmfUiTWUQ8pK_VmoYs3nQyTEVkY7T9j7aQBqTZ3o4-JiEX6LUnJ9yJfTtf7R9sOdRneJNbXjHhxBr3sGqMMtDrHmdVka0vwBT4QVv_mMuqPtb42Q6BC8miZL6n";
+    final private String contentType = "application/json";
+    final String TAG = "NOTIFICATION TAG";
+    private String NOTIFICATION_TITLE;
+    private String NOTIFICATION_MESSAGE;
+    private String TOPIC;
     public static int REQUEST_CODE = 1;
     private Button save;
     private Button search;
@@ -48,6 +67,7 @@ public class SearchPage extends AppCompatActivity {
     private Spinner spinner_period;
     private String subject;
     private int period;
+    private RequestQueue mRequestQueue;
     private int day;
     //    private EditText subject;
     private List<Tutor> Requests = new ArrayList<>();
@@ -155,9 +175,51 @@ public class SearchPage extends AppCompatActivity {
                     view.setEnabled(false);
                     TuteeHome.groups.add(r);
                     Toast.makeText(getApplicationContext(), "application sent", Toast.LENGTH_SHORT).show();
+                    //code for notification
+                    TOPIC = "/topics/" + tutor.getName(); //topic must match with what the receiver subscribed to
+                    NOTIFICATION_TITLE = "A new application for your session";
+                    NOTIFICATION_MESSAGE = "student " + tuteeInfo.getName() + " applied to your session" ;
+                    JSONObject notification = new JSONObject();
+                    JSONObject notifcationBody = new JSONObject();
+                    try {
+                        notifcationBody.put("title", NOTIFICATION_TITLE);
+                        notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+                        notification.put("to", TOPIC);
+                        notification.put("data", notifcationBody);
+                    } catch (JSONException e) {
+                        Log.e(TAG, "onCreate: " + e.getMessage() );
+                    }
+                    sendNotification(notification);
                 }
             });
             return convertView;
         }
+    }
+    private void sendNotification(JSONObject notification) {
+        mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i(TAG, "onResponse: " + response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Request error", Toast.LENGTH_LONG).show();
+                        Log.i(TAG, "onErrorResponse: Didn't work");
+                    }
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization", serverKey);
+                params.put("Content-Type", contentType);
+                return params;
+            }
+        };
+        mRequestQueue.add(jsonObjectRequest);
     }
 }

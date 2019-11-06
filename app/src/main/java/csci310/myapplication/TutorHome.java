@@ -29,6 +29,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import model.Request;
 import model.Session;
@@ -37,6 +38,7 @@ import model.Tutor;
 
 import static csci310.myapplication.MainActivity.requestRefe;
 import static csci310.myapplication.MainActivity.sessionRefe;
+import static csci310.myapplication.MainActivity.tuteeInfo;
 import static csci310.myapplication.MainActivity.tutorInfo;
 
 
@@ -50,6 +52,7 @@ public class TutorHome extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutorpage);
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/" + tutorInfo.getName());
         list = findViewById(R.id.listNotes);
         session = findViewById(R.id.Session);
         Log.d("debug listview", list.toString());

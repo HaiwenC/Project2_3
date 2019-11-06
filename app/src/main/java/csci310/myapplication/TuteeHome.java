@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import model.Request;
 import model.Session;
@@ -44,6 +45,7 @@ public class TuteeHome extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tuteepage);
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/" + tuteeInfo.getName());
         profile = findViewById(R.id.ProfileButton);
         Search = findViewById(R.id.Search);
         session = findViewById(R.id.TuteeSession);

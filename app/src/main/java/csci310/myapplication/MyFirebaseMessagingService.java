@@ -43,9 +43,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this , 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(),
+                R.drawable.notify_icon);
 
         Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
+                .setSmallIcon(R.drawable.notify_icon)
+                .setLargeIcon(largeIcon)
                 .setContentTitle(remoteMessage.getData().get("title"))
                 .setContentText(remoteMessage.getData().get("message"))
                 .setAutoCancel(true)
