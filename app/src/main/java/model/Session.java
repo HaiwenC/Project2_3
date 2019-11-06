@@ -9,23 +9,42 @@ public class Session {
     private int dayOfWeek;
     private int time;
     private String review;
-
+    private String tutorEmail;
+    private String tuteeEmail;
 //
 //    private ArrayList<Integer> weekList;
 //    private ArrayList<Integer> timeList;
 //    private ArrayList<String> subjectList;
 
-    public Session(String tutorName, String tuteeName, String subject, int dayOfWeek, int time){
+    public Session(String tutorName, String tuteeName, String subject, int dayOfWeek, int time,String tutorEmail, String tuteeEmail){
         this.tutee = tuteeName;
         this.tutor = tutorName;
         this.subject = subject;
         this.dayOfWeek = dayOfWeek;
         this.time = time;
         this.review = "";
+        this.tutorEmail = tutorEmail;
+        this.tuteeEmail =tuteeEmail;
 //
 //        weekList = tutor.getDay();
 //        timeList = tutor.getTime();
 //        subjectList = tutor.getSubject();
+    }
+
+    public String getTutorEmail() {
+        return tutorEmail;
+    }
+
+    public void setTutorEmail(String tutorEmail) {
+        this.tutorEmail = tutorEmail;
+    }
+
+    public String getTuteeEmail() {
+        return tuteeEmail;
+    }
+
+    public void setTuteeEmail(String tuteeEmail) {
+        this.tuteeEmail = tuteeEmail;
     }
 
     public String getTutee() {
