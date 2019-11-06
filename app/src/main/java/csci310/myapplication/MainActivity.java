@@ -90,15 +90,17 @@ public class MainActivity extends AppCompatActivity {
                                  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                  if (user.isEmailVerified())
                                  {
+                                     checkPassword(username.getText().toString(), passWord.getText().toString());
+
                                      Toast.makeText(getApplicationContext(), "email verified", Toast.LENGTH_SHORT).show();
                                  } else {
+                                     //user.sendEmailVerification();
                                      FirebaseAuth.getInstance().signOut();
-                                     Toast.makeText(getApplicationContext(), "please verify email", Toast.LENGTH_SHORT).show();
+                                     Toast.makeText(getApplicationContext(), "please verify email address", Toast.LENGTH_SHORT).show();
                                  }
                              }
                          }
                      });
-                    checkPassword(username.getText().toString(), passWord.getText().toString());
 
                 }
                 else{
@@ -114,15 +116,16 @@ public class MainActivity extends AppCompatActivity {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if (user.isEmailVerified())
                                 {
+                                    checkPassword(username.getText().toString(), passWord.getText().toString());
 
                                 } else {
+                                    //user.sendEmailVerification();
                                     FirebaseAuth.getInstance().signOut();
-                                    Toast.makeText(getApplicationContext(), "please verify email", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "please verify email address", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
                     });
-                    checkPassword(username.getText().toString(), passWord.getText().toString());
 
                 }
             }
