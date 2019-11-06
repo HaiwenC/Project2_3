@@ -77,7 +77,7 @@ public class TutorHome extends AppCompatActivity {
         Log.d("debug listview", list.toString());
 //        groups.add(new Request(new Tutee("1", "1", "Beiyou","1", "aaaaaaaaa"),
 //                new Tutor("1", "1", "!", "1", "aaaaaaaaa"), "csci109", 1 ,8, 9));
-        searchRequest(tutorInfo.getName());
+        searchRequest(tutorInfo.getUsername());
         profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +154,7 @@ public class TutorHome extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            groups.clear();
                             boolean isExist = false;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("datasearch", document.getId() + " => " + document.getData());

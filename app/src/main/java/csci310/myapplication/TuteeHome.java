@@ -113,17 +113,18 @@ public class TuteeHome extends AppCompatActivity {
     }
 
     private void searchRequest(String tuteeUN) {
-        Query query = requestRefe.whereEqualTo("tuteeUsername", tuteeUN);
+        Query query = requestRefe.whereEqualTo("tutee", tuteeUN);
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            groups.clear();
                             boolean isExist = false;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                Request requestNew = new Request(document.getData().get("tuteeUsername").toString(),document.getData().get("tutorUsername").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("day").toString()),Integer.parseInt(document.getData().get("time").toString()));
+                                Request requestNew = new Request(document.getData().get("tutee").toString(),document.getData().get("tutor").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("dayOfWeek").toString()),Integer.parseInt(document.getData().get("time").toString()));
                                 requestNew.setStatus(document.getData().get("status").toString());
                                 groups.add(requestNew);
 
