@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                                      Toast.makeText(getApplicationContext(), "email verified", Toast.LENGTH_SHORT).show();
                                  } else {
-                                     //user.sendEmailVerification();
+                                     user.sendEmailVerification();
                                      FirebaseAuth.getInstance().signOut();
                                      Toast.makeText(getApplicationContext(), "please verify email address", Toast.LENGTH_SHORT).show();
                                  }
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                                     checkPassword(username.getText().toString(), passWord.getText().toString());
 
                                 } else {
-                                    //user.sendEmailVerification();
+                                    user.sendEmailVerification();
                                     FirebaseAuth.getInstance().signOut();
                                     Toast.makeText(getApplicationContext(), "please verify email address", Toast.LENGTH_SHORT).show();
                                 }
