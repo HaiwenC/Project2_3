@@ -132,6 +132,7 @@ public class SessionHistory extends AppCompatActivity {
             TextView name = convertView.findViewById(R.id.RequestName);
             TextView course = convertView.findViewById(R.id.RequestCourse);
             TextView period = convertView.findViewById(R.id.TimePeriod);
+            TextView email = convertView.findViewById(R.id.status);
             Button accept = convertView.findViewById(R.id.Apply);
             Button reject = convertView.findViewById(R.id.reject);
             accept.setVisibility(View.INVISIBLE);
@@ -139,6 +140,13 @@ public class SessionHistory extends AppCompatActivity {
             Session gp = Groups.get(position);
             name.setText(gp.getTutee());
             course.setText(gp.getSubject());
+            email.setVisibility(View.VISIBLE);
+            if(MainActivity.tuteeInfo == null){
+                email.setText(gp.getTuteeEmail());
+            }
+            else{
+                email.setText(gp.getTutorEmail());
+            }
             period.setText(String.valueOf(gp.getTime())+":00 - " + String.valueOf(gp.getTime()+1)+":00");
             return convertView;
         }

@@ -139,10 +139,9 @@ public class TutorHome extends AppCompatActivity {
                     notifyTutee(gp, "rejected");
                 }
             });
-
             name.setText(gp.getTutee());
             course.setText(gp.getSubject());
-            period.setText(String.valueOf(gp.getTime()));
+            period.setText(String.valueOf(gp.getTime()) + ":00 - " + String.valueOf(gp.getTime()+1)+":00");
             return convertView;
         }
     }
