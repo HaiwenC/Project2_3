@@ -48,7 +48,7 @@ public class Request {
     public void acceptRequest(String newStatus) {
         status = newStatus;
 //        Session newSession = new Sections(timeBegin, timeEnd);
-        Session newSession = new Session(tutor, tutee, subject, dayOfWeek, time);
+        Session newSession = new Session(tutor, tutee, subject, dayOfWeek, time, tutorEmail, tuteeEmail);
 //        tutee.addSession(newSession);
 //        tutor.addSections(newSession, dayOfWeek, timeBegin);
         status = "accepted";

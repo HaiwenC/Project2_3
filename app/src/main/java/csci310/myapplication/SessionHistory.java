@@ -73,6 +73,8 @@ public class SessionHistory extends AppCompatActivity {
                         int time = -1;
                         String tuteeName = "";
                         String tutorName = "";
+                        String tutorEmail = "";
+                        String tuteeEmail = "";
                         if (task.isSuccessful()) {
                             groups.clear();
                             for (QueryDocumentSnapshot document: task.getResult()) {
@@ -84,8 +86,10 @@ public class SessionHistory extends AppCompatActivity {
                                 subject = document.getData().get("subject").toString();
                                 tuteeName = document.getData().get("tutee").toString();
                                 tutorName = document.getData().get("tutor").toString();
+                                tutorEmail = document.getData().get("tutorEmail").toString();
+                                tuteeEmail = document.getData().get("tuteeEmail").toString();
                                 //                                        Tutor tutorNew = new Tutor(studentID, email ,name, username, password);
-                                Session curSession = new Session(tutorName, tuteeName, subject, day, time);
+                                Session curSession = new Session(tutorName, tuteeName, subject, day, time, tutorEmail, tuteeEmail);
                                 groups.add(curSession);
                             }
                             if (isExist) {

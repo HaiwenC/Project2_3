@@ -123,7 +123,7 @@ public class TutorHome extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     gp.setStatus("accepted");
                     requestRefe.document(gp.getTutor()+gp.getTutee()).set(gp);
-                    Session sessionNew = new Session(gp.getTutor(),gp.getTutee(),gp.getSubject(),gp.getDayOfWeek(),gp.getTime());
+                    Session sessionNew = new Session(gp.getTutor(),gp.getTutee(),gp.getSubject(),gp.getDayOfWeek(),gp.getTime(), gp.getTutorEmail(),gp.getTuteeEmail());
                     sessionRefe.document(gp.getTutor()+gp.getTutee()).set(sessionNew);
                     notifyTutee(gp, "accepted");
 
@@ -159,7 +159,7 @@ public class TutorHome extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("datasearch", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                Request requestNew = new Request(document.getData().get("tutee").toString(),document.getData().get("tutor").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("dayOfWeek").toString()),Integer.parseInt(document.getData().get("time").toString()));
+                                Request requestNew = new Request(document.getData().get("tutee").toString(),document.getData().get("tutor").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("dayOfWeek").toString()),Integer.parseInt(document.getData().get("time").toString()),document.getData().get("tutorEmail").toString(),document.getData().get("tuteeEmail").toString());
                                 requestNew.setStatus(document.getData().get("status").toString());
                                 if (requestNew.getStatus().equals("available")){
                                     groups.add(requestNew);
