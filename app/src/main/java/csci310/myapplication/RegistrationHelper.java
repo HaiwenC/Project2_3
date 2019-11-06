@@ -33,6 +33,14 @@ public class RegistrationHelper {
         } else if (name == null || name.length() == 0) {
             errorCode = 1;
             return false;
+        } else if (name != null) {
+            char[] chars = name.toCharArray();
+            for (char c : chars) {
+                if (!Character.isLetter(c)) {
+                    errorCode = 1;
+                    return false;
+                }
+            }
         } else if (password == null || password.length() < 8) {
             errorCode = 2;
             return false;
@@ -42,14 +50,13 @@ public class RegistrationHelper {
         } else if (!password.equals(password2)) {
             errorCode = 4;
             return false;
-        }
-        else {
+        } else {
             errorCode = 3;
             if (email == null) {
                 return false;
             }
             //Regex email verification
-            String emailRegex = "^[a-zA-Z0-9_]+(?:\\."+
+            String emailRegex = "^[a-zA-Z0-9_]+(?:\\." +
                     "[a-zA-Z0-9_]+)*@" +
                     "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                     "A-Z]{2,7}$";
@@ -60,5 +67,6 @@ public class RegistrationHelper {
                 return false;
             return pat.matcher(email).matches();
         }
+        return true;
     }
 }
