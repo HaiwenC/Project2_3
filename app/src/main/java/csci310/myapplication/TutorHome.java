@@ -15,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -30,6 +38,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import model.Request;
 import model.Session;
@@ -43,9 +54,17 @@ import static csci310.myapplication.MainActivity.tutorInfo;
 
 
 public class TutorHome extends AppCompatActivity {
+    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
+    final private String serverKey = "key=" + "AAAA-ESL_yo:APA91bEiMLxPBAp-OrOmfUiTWUQ8pK_VmoYs3nQyTEVkY7T9j7aQBqTZ3o4-JiEX6LUnJ9yJfTtf7R9sOdRneJNbXjHhxBr3sGqMMtDrHmdVka0vwBT4QVv_mMuqPtb42Q6BC8miZL6n";
+    final private String contentType = "application/json";
+    final String TAG = "NOTIFICATION TAG";
+    private String NOTIFICATION_TITLE;
+    private String NOTIFICATION_MESSAGE;
+    private String TOPIC;
     private Button profile;
     private Button session;
     private ListView list;
+    private RequestQueue mRequestQueue;
     private RequestAdapter adapter;
     public static List<Request> groups = new ArrayList<Request>();
     @Override
@@ -58,7 +77,7 @@ public class TutorHome extends AppCompatActivity {
         Log.d("debug listview", list.toString());
 //        groups.add(new Request(new Tutee("1", "1", "Beiyou","1", "aaaaaaaaa"),
 //                new Tutor("1", "1", "!", "1", "aaaaaaaaa"), "csci109", 1 ,8, 9));
-        searchRequest(tutorInfo.getUsername());
+        searchRequest(tutorInfo.getName());
         profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +125,8 @@ public class TutorHome extends AppCompatActivity {
                     requestRefe.document(gp.getTutor()+gp.getTutee()).set(gp);
                     Session sessionNew = new Session(gp.getTutor(),gp.getTutee(),gp.getSubject(),gp.getDayOfWeek(),gp.getTime());
                     sessionRefe.document(gp.getTutor()+gp.getTutee()).set(sessionNew);
+                    notifyTutee(gp, "accepted");
+
                 }
             });
             reject.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +136,7 @@ public class TutorHome extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     gp.setStatus("rejected");
                     requestRefe.document(gp.getTutor()+gp.getTutee()).set(gp);
+                    notifyTutee(gp, "rejected");
                 }
             });
 
@@ -126,7 +148,7 @@ public class TutorHome extends AppCompatActivity {
     }
 
     private void searchRequest(String tutorUN) {
-        Query query = requestRefe.whereEqualTo("tutorUsername", tutorUN);
+        Query query = requestRefe.whereEqualTo("tutor", tutorUN);
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -134,9 +156,9 @@ public class TutorHome extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             boolean isExist = false;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("qqqq", document.getId() + " => " + document.getData());
+                                Log.d("datasearch", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                Request requestNew = new Request(document.getData().get("tuteeUsername").toString(),document.getData().get("tutorUsername").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("day").toString()),Integer.parseInt(document.getData().get("time").toString()));
+                                Request requestNew = new Request(document.getData().get("tutee").toString(),document.getData().get("tutor").toString(),document.getData().get("subject").toString(),Integer.parseInt(document.getData().get("dayOfWeek").toString()),Integer.parseInt(document.getData().get("time").toString()));
                                 requestNew.setStatus(document.getData().get("status").toString());
                                 if (requestNew.getStatus().equals("available")){
                                     groups.add(requestNew);
@@ -152,5 +174,49 @@ public class TutorHome extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void notifyTutee(Request rq, String accept){
+        //code for notification
+        TOPIC = "/topics/" + rq.getTutee(); //topic must match with what the receiver subscribed to
+        NOTIFICATION_TITLE = "Your application decision is available";
+        NOTIFICATION_MESSAGE = "Your application to tutor " + rq.getTutor() + " is " + accept;
+        JSONObject notification = new JSONObject();
+        JSONObject notifcationBody = new JSONObject();
+        try {
+            notifcationBody.put("title", NOTIFICATION_TITLE);
+            notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+            notification.put("to", TOPIC);
+            notification.put("data", notifcationBody);
+        } catch (JSONException e) {
+            Log.e(TAG, "onCreate: " + e.getMessage() );
+        }
+        sendNotification(notification);
+    }
+    private void sendNotification(JSONObject notification) {
+        mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i(TAG, "onResponse: " + response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Request error", Toast.LENGTH_LONG).show();
+                        Log.i(TAG, "onErrorResponse: Didn't work");
+                    }
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization", serverKey);
+                params.put("Content-Type", contentType);
+                return params;
+            }
+        };
+        mRequestQueue.add(jsonObjectRequest);
     }
 }
