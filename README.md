@@ -1,4 +1,4 @@
-<h1>Tutor</h1>
+<h1>tUtor SearCher</h1>
 In order to run the app, unzip the contents and run with the recommended system specifications:
 	Android studio 3.5
 	JRE 1.8.0_202
