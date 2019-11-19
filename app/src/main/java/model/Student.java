@@ -22,18 +22,19 @@ import java.util.regex.Pattern;
  * <p>
  * @author      Mingchen Zhang
  */
-abstract class Student {
+public class Student {
     private String studentID;
     private String email;
     private String name;
     private String username;
     private String password;
+    public boolean isTutee = false;
 //    private Calendar calendar;
 //    List<Request> requestList;
 //    List<Session> sessionList;
 
-
-    Student(String sID, String e, String n, String un, String pass) {
+    public Student(){}
+    public Student(String sID, String e, String n, String un, String pass) {
         name = n;
         studentID = sID;
         email = e;

@@ -40,6 +40,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import model.Student;
 import model.Tutee;
 import model.Tutor;
 
@@ -66,6 +67,20 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //SaveSharedPreference.clearUser(getApplicationContext());
+        if(SaveSharedPreference.getUser(getApplicationContext())!=null){
+            Student student = SaveSharedPreference.getUser(getApplicationContext());
+            Intent i;
+            if(student.isTutee){
+                tuteeInfo = (Tutee)student;
+                i = new Intent(getApplicationContext(),TuteeHome.class);
+            }
+            else{
+                tutorInfo = (Tutor)student;
+                i = new Intent(getApplicationContext(),TutorHome.class);
+            }
+            startActivity(i);
+        }
         RButton = findViewById(R.id.radioGroup);
         Reg = findViewById(R.id.ButRegister);
         Login = findViewById(R.id.ButLogin);
@@ -216,6 +231,8 @@ public class MainActivity extends AppCompatActivity {
                                     tuteeInfo.setLastSearch_day(last_day);
                                     tuteeInfo.setLastSearch_time(last_time);
                                     tuteeInfo.setLastSearch_subject(last_subject);
+                                    tuteeInfo.isTutee = true;
+                                    SaveSharedPreference.setUser(getApplicationContext(), tuteeInfo);
                                     i = new Intent(getApplicationContext(),TuteeHome.class);
                                 }else {
                                     tutorInfo = new Tutor(studentID,email ,name, username, password);
@@ -224,6 +241,8 @@ public class MainActivity extends AppCompatActivity {
                                     tutorInfo.setWeekNew(tutor_day);
                                     tutorInfo.setNumRatings(tutor_numRating);
                                     tutorInfo.setRatingTotal(tutor_totalRating);
+                                    tutorInfo.isTutee = false;
+                                    SaveSharedPreference.setUser(getApplicationContext(), tutorInfo);
                                     i = new Intent(getApplicationContext(),TutorHome.class);
                                 }
                                 startActivity(i);

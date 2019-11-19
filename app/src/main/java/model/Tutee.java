@@ -9,7 +9,9 @@ public class Tutee extends Student {
     private String last_subject;
     private int last_day;
     private int last_time;
-
+    public Tutee(){
+        super();
+    }
     public Tutee(String studentID, String email, String name, String username, String password) {
         super(studentID, email, name, username, password);
 //        sectionsLearning = new ArrayList<Session>();
