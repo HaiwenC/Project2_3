@@ -4,6 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
@@ -39,10 +40,10 @@ public class UITest {
     @Test
     public void changeText_sameActivity() {
         // Type text and then press the button.
-        onView(withId(R.id.EditUsername)).perform(click())
-                .perform(typeText(username));
+        onView(withId(R.id.EditUsername))
+                .perform(typeText(username), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.EditPassword)).perform(click())
-                .perform(typeText(password));
+                .perform(typeText(password),ViewActions.closeSoftKeyboard());
         onView(withId(R.id.ButLogin)).perform(click());
 
         // Check that the text was changed.
