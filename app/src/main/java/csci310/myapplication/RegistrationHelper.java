@@ -27,31 +27,50 @@ public class RegistrationHelper {
     }
     public boolean isValid() {
         System.out.println(user);
+        System.out.println("password: "+password);
+        System.out.println("password2: "+password2);
+        System.out.println("passwordlen: "+password.length());
+        System.out.println("password2len: "+password2.length());
+        System.out.println("passwordlenCheck: "+(password.length() < 8));
+        if (password.length() < 8)
+        {
+//            System.out.println("passwordlenCheck: "+(password.length() < 8));
+            errorCode = 2;
+            return false;
+        }
+
         if (user == null || user.length() == 0) {
             errorCode = 0;
+            System.out.println("failed at "+errorCode);
             return false;
         } else if (name == null || name.length() == 0) {
             errorCode = 1;
+            System.out.println("failed at "+errorCode);
             return false;
         } else if (name != null) {
             char[] chars = name.toCharArray();
             for (char c : chars) {
                 if (!Character.isLetter(c)) {
                     errorCode = 1;
+                    System.out.println("failed at "+errorCode);
                     return false;
                 }
             }
         } else if (password == null || password.length() < 8) {
             errorCode = 2;
+            System.out.println("failed at "+errorCode);
             return false;
         } else if (password2 == null || password2.length() < 8) {
             errorCode = 2;
+            System.out.println("failed at "+errorCode);
             return false;
-        } else if (!password.equals(password2)) {
+        } else if (!password.contains(password2)) {
             errorCode = 4;
+            System.out.println("failed at "+errorCode);
             return false;
         } else {
             errorCode = 3;
+            System.out.println("failed at "+errorCode);
             if (email == null) {
                 return false;
             }
@@ -63,7 +82,10 @@ public class RegistrationHelper {
 
             Pattern pat = Pattern.compile(emailRegex);
             String[] data = email.split("@", 2);
-            if (data.length != 2 || !data[1].equalsIgnoreCase("usc.edu"))
+            System.out.println("data[1] "+data[1]);
+            System.out.println("!equal usc.edu "+(data[1].equalsIgnoreCase("usc.edu")));
+
+            if (data.length != 2 || !data[1].equalsIgnoreCase("usc.edu") || email == null)
                 return false;
             return pat.matcher(email).matches();
         }
