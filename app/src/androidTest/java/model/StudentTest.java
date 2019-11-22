@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TuteeTest {
+public class StudentTest {
 
     @Test
     public void setName() {
@@ -13,7 +13,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getName();
 
@@ -32,12 +32,11 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getUsername();
 
         assertEquals(check, username);
-
     }
 
     @Test
@@ -47,7 +46,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getUsername();
 
@@ -66,7 +65,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getPassword();
 
@@ -81,7 +80,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getPassword();
 
@@ -91,8 +90,8 @@ public class TuteeTest {
         assertEquals(check2, "newerPassword");
         assertNotEquals(check,check2);
 
-    }
 
+    }
 
     @Test
     public void getName() {
@@ -102,7 +101,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getName();
 
@@ -118,11 +117,12 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getEmail();
 
         assertEquals(check, email);
+
 
     }
 
@@ -134,7 +134,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getEmail();
 
@@ -143,6 +143,7 @@ public class TuteeTest {
         String check2 = user.getEmail();
         assertEquals(check2,"new@usc.edu");
         assertNotEquals(check, check2);
+
     }
 
     @Test
@@ -153,7 +154,7 @@ public class TuteeTest {
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getStudentID();
 
@@ -164,12 +165,13 @@ public class TuteeTest {
     @Test
     public void setStudentID() {
 
+
         String studentID = "5837293";
         String email = "hello@usc.edu";
         String name = "Julia";
         String username = "King";
         String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
+        Student user = new Student(studentID, email, name, username, password);
 
         String check = user.getStudentID();
 
@@ -179,107 +181,6 @@ public class TuteeTest {
 
         assertEquals(check2,"2123");
         assertNotEquals(check,check2);
-
-    }
-
-    @Test
-    public void getLastSearch_subject() {
-
-
-        String studentID = "5837293";
-        String email = "hello@usc.edu";
-        String name = "Julia";
-        String username = "King";
-        String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
-
-        String check = user.getLastSearch_subject();
-
-        assertEquals(check,"");
-
-    }
-
-    @Test
-    public void setLastSearch_subject() {
-        String studentID = "5837293";
-        String email = "hello@usc.edu";
-        String name = "Julia";
-        String username = "King";
-        String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
-
-        user.setLastSearch_subject("CSCI104");
-
-        String check = user.getLastSearch_subject();
-
-        assertEquals(check,"CSCI104");
-    }
-
-    @Test
-    public void getLastSearch_day() {
-
-        String studentID = "5837293";
-        String email = "hello@usc.edu";
-        String name = "Julia";
-        String username = "King";
-        String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
-
-        int check = user.getLastSearch_day();
-
-        assertEquals(check, -1);
-
-    }
-
-    @Test
-    public void setLastSearch_day() {
-
-        String studentID = "5837293";
-        String email = "hello@usc.edu";
-        String name = "Julia";
-        String username = "King";
-        String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
-
-        user.setLastSearch_day(3);
-
-        int check = user.getLastSearch_day();
-
-        assertEquals(check, 3);
-
-    }
-
-    @Test
-    public void getLastSearch_time() {
-
-        String studentID = "5837293";
-        String email = "hello@usc.edu";
-        String name = "Julia";
-        String username = "King";
-        String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
-
-        int check = user.getLastSearch_time();
-
-        assertEquals(check, -1);
-
-    }
-
-    @Test
-    public void setLastSearch_time() {
-
-        String studentID = "5837293";
-        String email = "hello@usc.edu";
-        String name = "Julia";
-        String username = "King";
-        String password = "securedPasswor";
-        Tutee user = new Tutee(studentID, email, name, username, password);
-
-        user.setLastSearch_time(5);
-
-        int check = user.getLastSearch_time();
-
-        assertEquals(check, 5);
 
     }
 }
