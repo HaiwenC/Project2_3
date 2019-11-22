@@ -89,7 +89,7 @@ public class profiletest {
         appCompatButton2.perform(click());
         try{
             Thread.sleep(5000);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e){
             e.printStackTrace();
         }
         ViewInteraction editText = onView(
