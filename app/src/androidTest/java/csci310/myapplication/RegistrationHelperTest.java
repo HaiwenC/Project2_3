@@ -53,7 +53,7 @@ public class RegistrationHelperTest {
     public  void invalidEmail(){
         RegistrationHelper invalidEmail = new RegistrationHelper("sdf", "hello", "check@gmail.com", "hiasdfsdfsdfsdf", "hiasdfsdfsdfsdf");
         assertEquals(invalidEmail.isValid(), false);
-//        assertEquals(invalidEmail.errorCode, 3);
+        assertEquals(invalidEmail.errorCode, 3);
 
     }
 

@@ -32,6 +32,17 @@ public class RegistrationHelper {
         System.out.println("passwordlen: "+password.length());
         System.out.println("password2len: "+password2.length());
         System.out.println("passwordlenCheck: "+(password.length() < 8));
+
+        String[] data = email.split("@", 2);
+        System.out.println("data[1] "+data[1]);
+        System.out.println("!equal usc.edu "+(!data[1].equalsIgnoreCase("usc.edu")));
+
+        if (!data[1].equalsIgnoreCase("usc.edu"))
+        {   errorCode = 3;
+            System.out.println("entered email check");
+            return false;
+        }
+
         if (password.length() < 8)
         {
 //            System.out.println("passwordlenCheck: "+(password.length() < 8));
@@ -80,14 +91,7 @@ public class RegistrationHelper {
                     "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                     "A-Z]{2,7}$";
 
-            Pattern pat = Pattern.compile(emailRegex);
-            String[] data = email.split("@", 2);
-            System.out.println("data[1] "+data[1]);
-            System.out.println("!equal usc.edu "+(data[1].equalsIgnoreCase("usc.edu")));
 
-            if (data.length != 2 || !data[1].equalsIgnoreCase("usc.edu") || email == null)
-                return false;
-            return pat.matcher(email).matches();
         }
         return true;
     }
