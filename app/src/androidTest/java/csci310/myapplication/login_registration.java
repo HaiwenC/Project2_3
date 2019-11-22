@@ -8,12 +8,14 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -32,9 +34,18 @@ public class login_registration {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
-
+    @Before
+    public void initValidString() {
+        // Specify a valid string.
+        SaveSharedPreference.clearUser(InstrumentationRegistry.getInstrumentation().getTargetContext());
+    }
     @Test
     public void login_registration() {
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.ButRegister),
                         childAtPosition(
@@ -44,7 +55,11 @@ public class login_registration {
                                 4),
                         isDisplayed()));
         appCompatButton.perform(click());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.EditUsername),
                         childAtPosition(
@@ -54,7 +69,11 @@ public class login_registration {
                                 11),
                         isDisplayed()));
         appCompatEditText.perform(replaceText("stark"), closeSoftKeyboard());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.EditName),
                         childAtPosition(
@@ -64,7 +83,11 @@ public class login_registration {
                                 7),
                         isDisplayed()));
         appCompatEditText2.perform(replaceText("mingchen"), closeSoftKeyboard());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.EditEmail),
                         childAtPosition(
@@ -74,7 +97,11 @@ public class login_registration {
                                 1),
                         isDisplayed()));
         appCompatEditText3.perform(replaceText("zhan307"), closeSoftKeyboard());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.EditEmail), withText("zhan307"),
                         childAtPosition(
@@ -84,7 +111,11 @@ public class login_registration {
                                 1),
                         isDisplayed()));
         appCompatEditText4.perform(click());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.EditEmail), withText("zhan307"),
                         childAtPosition(
@@ -94,7 +125,11 @@ public class login_registration {
                                 1),
                         isDisplayed()));
         appCompatEditText5.perform(replaceText("zhan307@usc.ed"));
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.EditEmail), withText("zhan307@usc.ed"),
                         childAtPosition(
@@ -104,7 +139,11 @@ public class login_registration {
                                 1),
                         isDisplayed()));
         appCompatEditText6.perform(closeSoftKeyboard());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.EditPassword),
                         childAtPosition(
@@ -114,7 +153,11 @@ public class login_registration {
                                 0),
                         isDisplayed()));
         appCompatEditText7.perform(click());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText8 = onView(
                 allOf(withId(R.id.EditPassword),
                         childAtPosition(
@@ -124,7 +167,11 @@ public class login_registration {
                                 0),
                         isDisplayed()));
         appCompatEditText8.perform(click());
-
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText9 = onView(
                 allOf(withId(R.id.EditPassword),
                         childAtPosition(
