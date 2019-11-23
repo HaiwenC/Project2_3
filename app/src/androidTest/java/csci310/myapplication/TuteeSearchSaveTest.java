@@ -23,19 +23,50 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TuteeLogin {
+public class TuteeSearchSaveTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void tuteeLogin() {
+    public void tuteeSearchSaveTest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.EditUsername),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.EditPassword),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("abcd1234"), closeSoftKeyboard());
+
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.ButLogin),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction appCompatButton2 = onView(
+                allOf(withId(R.id.Search), withText("Search"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -47,32 +78,17 @@ public class TuteeLogin {
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-//        appCompatEditText.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
-        try{
-            Thread.sleep(5000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
+        appCompatButton2.perform(click());
 
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.EditPassword),
+        ViewInteraction appCompatButton3 = onView(
+                allOf(withId(R.id.SaveBut), withText("Save"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                2),
+                                8),
                         isDisplayed()));
-//        appCompatEditText2.perform(replaceText("abcd1234"), closeSoftKeyboard());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.ButLogin),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatButton.perform(click());
+        appCompatButton3.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
