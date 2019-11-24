@@ -37,7 +37,7 @@ import model.Tutee;
 import model.Tutor;
 
 @RunWith(AndroidJUnit4.class)
-public class TutorHomeSearchTestTest {
+public class TutorHomeSearchTest {
 
 
     @Rule

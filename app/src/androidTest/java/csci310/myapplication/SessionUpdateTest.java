@@ -53,7 +53,7 @@ public class SessionUpdateTest {
     private String tutorname;
     private String subject = "CSCI310";
     private int dayOfWeek = 5;
-    private int time = 10;
+    private int time = 8;
     private String tutorEmail = "philipju@usc.edu";
     private String tuteeEmail = "beiyouzh@usc.edu";
 
@@ -101,7 +101,7 @@ public class SessionUpdateTest {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                assertEquals("Checking the new time","10",document.getData().get("time").toString());
+                                assertEquals("Checking the new time","8",document.getData().get("time").toString());
                             }
 
                         } else {
