@@ -8,38 +8,39 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import androidx.test.espresso.DataInteraction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
-import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.pressImeActionButton;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
-import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TuteeSessionTest {
+public class TuteeSessionExsit {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
-
+    @Before
+    public void initValidString() {
+        SaveSharedPreference.clearUser(InstrumentationRegistry.getInstrumentation().getTargetContext());
+    }
     @Test
-    public void tuteeSessionTest() {
+    public void tuteeSessionExsit() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.EditUsername),
                         childAtPosition(
@@ -48,9 +49,19 @@ public class TuteeSessionTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
+        appCompatEditText.perform(click());
 
         ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.EditUsername),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.EditPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -58,69 +69,9 @@ public class TuteeSessionTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("abcd123"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText3.perform(click());
+        appCompatEditText3.perform(replaceText("abcd1234"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText4.perform(click());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText5.perform(click());
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText6.perform(click());
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.EditUsername), withText("beiyouzh@usc.edu"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText7.perform(click());
-
-        ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText8.perform(replaceText("abcd1234"));
-
-        ViewInteraction appCompatEditText9 = onView(
                 allOf(withId(R.id.EditPassword), withText("abcd1234"),
                         childAtPosition(
                                 childAtPosition(
@@ -128,7 +79,7 @@ public class TuteeSessionTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText9.perform(closeSoftKeyboard());
+        appCompatEditText4.perform(pressImeActionButton());
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.ButLogin),
@@ -154,22 +105,6 @@ public class TuteeSessionTest {
             e.printStackTrace();
         }
         appCompatButton2.perform(click());
-
-        DataInteraction linearLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.sessionHistory),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-                .atPosition(1);
-        linearLayout.perform(click());
-
-        DataInteraction linearLayout2 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.sessionHistory),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-                .atPosition(0);
-        linearLayout2.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
