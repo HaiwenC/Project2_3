@@ -70,6 +70,9 @@ public class TutorHome extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(tutorInfo==null) {
+            tutorInfo = new Tutor("1234567890","testTutor@usc.edu","testTutor","testTutor","abcd1234");
+        }
         setContentView(R.layout.tutorpage);
         FirebaseMessaging.getInstance().subscribeToTopic("/topics/" + tutorInfo.getName());
         list = findViewById(R.id.listNotes);
@@ -146,7 +149,7 @@ public class TutorHome extends AppCompatActivity {
         }
     }
 
-    private void searchRequest(String tutorUN) {
+    public void searchRequest(String tutorUN) {
         Query query = requestRefe.whereEqualTo("tutor", tutorUN);
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

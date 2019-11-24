@@ -9,12 +9,21 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import model.Tutee;
+
+import static csci310.myapplication.MainActivity.tuteeInfo;
+import static csci310.myapplication.MainActivity.tuteeRefe;
+import static csci310.myapplication.MainActivity.tutorRefe;
+
 public class TuteeProfile extends AppCompatActivity {
     private EditText name;
     private Button update;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(tuteeInfo==null) {
+            tuteeInfo = new Tutee("1234567890","testTutee@usc.edu","testTutee","testTutee","abcd1234");
+        }
         setContentView(R.layout.tuteeprofilepage);
         name = findViewById(R.id.EditUsername);
         update = findViewById(R.id.SaveBut);
@@ -28,5 +37,9 @@ public class TuteeProfile extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void modifyName(String username,String newName){
+        tuteeRefe.document(username).set(new Tutee("1234567890","testTutee@usc.edu",newName,"testTutee","abcd1234"));
     }
 }

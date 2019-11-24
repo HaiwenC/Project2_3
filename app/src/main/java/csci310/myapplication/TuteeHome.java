@@ -29,6 +29,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import model.Request;
 import model.Session;
+import model.Tutee;
 
 import static csci310.myapplication.MainActivity.requestRefe;
 import static csci310.myapplication.MainActivity.sessionRefe;
@@ -44,6 +45,9 @@ public class TuteeHome extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(tuteeInfo==null) {
+            tuteeInfo = new Tutee("1234567890","testTutee@usc.edu","testTutee","testTutee","abcd1234");
+        }
         setContentView(R.layout.tuteepage);
         FirebaseMessaging.getInstance().subscribeToTopic("/topics/" + tuteeInfo.getName());
         profile = findViewById(R.id.ProfileButton);
@@ -112,7 +116,7 @@ public class TuteeHome extends AppCompatActivity {
         }
     }
 
-    private void searchRequest(String tuteeUN) {
+    public void searchRequest(String tuteeUN) {
         Query query = requestRefe.whereEqualTo("tutee", tuteeUN);
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

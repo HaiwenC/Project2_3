@@ -10,6 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import model.Tutor;
+
+import static csci310.myapplication.MainActivity.tutorInfo;
+import static csci310.myapplication.MainActivity.tutorRefe;
+
 public class TutorProfile extends AppCompatActivity {
     private Button update;
     private Button returnToHome;
@@ -23,6 +28,10 @@ public class TutorProfile extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(tutorInfo==null) {
+            tutorInfo = new Tutor("1234567890","testTutor@usc.edu","testTutor","testTutor","abcd1234");
+            tutorInfo.setSubjectNew("CSCI104");
+        }
         setContentView(R.layout.profilepage);
         name = findViewById(R.id.TutorName);
         courseName = findViewById(R.id.CourseNameId);
@@ -66,5 +75,9 @@ public class TutorProfile extends AppCompatActivity {
         email.setText(MainActivity.tutorInfo.getEmail());
         Dayofweek.setText(week[MainActivity.tutorInfo.getWeekNew()%7]);
 
+    }
+
+    public void modifyName(String username,String newName){
+        tutorRefe.document(username).set(new Tutor("1234567890","testTutee@usc.edu",newName,"testTutee","abcd1234"));
     }
 }
