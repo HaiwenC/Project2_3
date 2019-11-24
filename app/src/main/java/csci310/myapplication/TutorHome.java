@@ -66,7 +66,7 @@ public class TutorHome extends AppCompatActivity {
     private ListView list;
     private RequestQueue mRequestQueue;
     private RequestAdapter adapter;
-    public static List<Request> groups = new ArrayList<Request>();
+    public static List<Request> groups = new ArrayList<>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

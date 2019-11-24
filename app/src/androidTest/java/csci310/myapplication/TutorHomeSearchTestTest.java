@@ -61,14 +61,13 @@ public class TutorHomeSearchTestTest {
     public static List<Request> groups = new ArrayList<>();
 
     @Before
-    public void setup() {
+    public void setup() throws InterruptedException {
         th = (TutorHome) mActivityRule.getActivity();
 
 
         tuteeUsername   = "testTutee";
         tuteeEmail      = "testTutee@usc.edu";
         strudentID = "1234567890";
-        dayOfWeek = 5;
         status = "available";
         subject = "CSCI104";
         tutorUsername = "testTutor";
@@ -77,32 +76,13 @@ public class TutorHomeSearchTestTest {
 
         requestsRefe.document(tutorUsername+tuteeUsername).set(new Request(tuteeUsername,tutorUsername,subject,dayOfWeek,time,tutorEmail,tuteeEmail));
 
-        th.searchRequest(tuteeUsername);
+        th.searchRequest(tutorUsername);
         groups = th.groups;
+        Thread.sleep(2000);
+        dayOfWeek = groups.get(0).getDayOfWeek();
+        subject = groups.get(0).getSubject();
     }
 
-
-    @Test
-    public void checkSearchRequest() {
-        Query query = requestsRefe.whereEqualTo("tutor", tutorUsername);
-        query.get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        boolean isExist = false;
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("qqqq", document.getId() + " => " + document.getData());
-                                isExist = true;
-                            }
-
-                        } else {
-                            Log.d("qqqq","Error, can't run query");
-                        }
-                        assertTrue("User should exist in database", isExist);
-                    }
-                });
-    }
 
     @Test
     public void checkDayOfWeek() {
@@ -116,7 +96,7 @@ public class TutorHomeSearchTestTest {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                assertEquals("Checking the dayOfWeek data",groups.get(0).getDayOfWeek(), Integer.parseInt(document.getData().get("dayOfWeek").toString()));
+                                assertEquals("Checking the dayOfWeek data",dayOfWeek, Integer.parseInt(document.getData().get("dayOfWeek").toString()));
                             }
 
                         } else {
@@ -138,12 +118,34 @@ public class TutorHomeSearchTestTest {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("qqqq", document.getId() + " => " + document.getData());
                                 isExist = true;
-                                assertEquals("Checking the subject data",groups.get(0).getSubject(), document.getData().get("subject").toString());
+                                assertEquals("Checking the subject data",subject, document.getData().get("subject").toString());
                             }
 
                         } else {
                             Log.d("qqqq","Error, can't run query");
                         }
+                    }
+                });
+    }
+
+    @Test
+    public void checkSearchRequest() {
+        Query query = requestsRefe.whereEqualTo("tutor", tutorUsername);
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        boolean isExist = false;
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("qqqq", document.getId() + " => " + document.getData());
+                                isExist = true;
+                            }
+
+                        } else {
+                            Log.d("qqqq","Error, can't run query");
+                        }
+                        assertTrue("User should exist in database", isExist);
                     }
                 });
     }
