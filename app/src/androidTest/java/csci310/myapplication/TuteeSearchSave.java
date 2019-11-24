@@ -8,12 +8,14 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -28,13 +30,16 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TuteeSearchSaveTest {
+public class TuteeSearchSave {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
-
+    @Before
+    public void initValidString() {
+        SaveSharedPreference.clearUser(InstrumentationRegistry.getInstrumentation().getTargetContext());
+    }
     @Test
-    public void tuteeSearchSaveTest() {
+    public void tuteeSearchSave() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.EditUsername),
                         childAtPosition(
@@ -43,9 +48,29 @@ public class TuteeSearchSaveTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
+        appCompatEditText.perform(click());
 
         ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.EditUsername),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.EditUsername),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.EditPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -53,7 +78,7 @@ public class TuteeSearchSaveTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("abcd1234"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("abcd1234"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.ButLogin),

@@ -8,6 +8,7 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import org.junit.runner.RunWith;
 import androidx.test.espresso.DataInteraction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -33,13 +35,16 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TuteeSession104Save {
+public class TuteeSession104 {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
-
+    @Before
+    public void initValidString() {
+        SaveSharedPreference.clearUser(InstrumentationRegistry.getInstrumentation().getTargetContext());
+    }
     @Test
-    public void tuteeSession104Save() {
+    public void tuteeSession104() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.EditUsername),
                         childAtPosition(
@@ -48,39 +53,19 @@ public class TuteeSession104Save {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("beiyouzh@usc.edu o"), closeSoftKeyboard());
+        appCompatEditText.perform(click());
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.EditUsername), withText("beiyouzh@usc.edu o"),
+                allOf(withId(R.id.EditUsername),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText2.perform(click());
+        appCompatEditText2.perform(replaceText("beiyouzh@usc.edu"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.EditUsername), withText("beiyouzh@usc.edu o"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("beiyouzh@usc.edu"));
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.EditUsername), withText("beiyouzh@usc.edu"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText4.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.EditPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -88,57 +73,7 @@ public class TuteeSession104Save {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("abcd"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText6.perform(click());
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText7.perform(click());
-
-        ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText8.perform(click());
-
-        ViewInteraction appCompatEditText9 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText9.perform(replaceText("abcd1234"));
-
-        ViewInteraction appCompatEditText10 = onView(
-                allOf(withId(R.id.EditPassword), withText("abcd1234"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText10.perform(closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("abcd1234"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.ButLogin),
@@ -150,27 +85,6 @@ public class TuteeSession104Save {
                         isDisplayed()));
         appCompatButton.perform(click());
 
-        DataInteraction linearLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.listNotes),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-                .atPosition(1);
-        try{
-            Thread.sleep(5000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
-        linearLayout.perform(click());
-
-        DataInteraction linearLayout2 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.listNotes),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-                .atPosition(0);
-        linearLayout2.perform(click());
-
         ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.Search), withText("Search"),
                         childAtPosition(
@@ -179,6 +93,11 @@ public class TuteeSession104Save {
                                         0),
                                 1),
                         isDisplayed()));
+        try{
+            Thread.sleep(5000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         appCompatButton2.perform(click());
 
         ViewInteraction appCompatSpinner = onView(
@@ -212,7 +131,7 @@ public class TuteeSession104Save {
                 .inAdapterView(childAtPosition(
                         withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
                         0))
-                .atPosition(3);
+                .atPosition(4);
         appCompatTextView2.perform(click());
 
         ViewInteraction appCompatSpinner3 = onView(
@@ -229,7 +148,7 @@ public class TuteeSession104Save {
                 .inAdapterView(childAtPosition(
                         withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
                         0))
-                .atPosition(5);
+                .atPosition(2);
         appCompatTextView3.perform(click());
 
         ViewInteraction appCompatButton3 = onView(

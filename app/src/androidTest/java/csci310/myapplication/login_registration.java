@@ -54,6 +54,11 @@ public class login_registration {
                                         0),
                                 4),
                         isDisplayed()));
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         appCompatButton.perform(click());
         try{
             Thread.sleep(5000);
