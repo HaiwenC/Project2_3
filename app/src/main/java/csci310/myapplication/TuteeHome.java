@@ -90,7 +90,9 @@ public class TuteeHome extends AppCompatActivity {
                 }
                 groups.clear();
                 for(DocumentSnapshot doc: queryDocumentSnapshots){
-                    groups.add( new Request(doc.getData().get("tutee").toString(),doc.getData().get("tutor").toString(),doc.getData().get("subject").toString(),Integer.parseInt(doc.getData().get("dayOfWeek").toString()),Integer.parseInt(doc.getData().get("time").toString()), doc.getData().get("tutorEmail").toString(),doc.getData().get("tuteeEmail").toString()));
+                    Request r = new Request(doc.getData().get("tutee").toString(),doc.getData().get("tutor").toString(),doc.getData().get("subject").toString(),Integer.parseInt(doc.getData().get("dayOfWeek").toString()),Integer.parseInt(doc.getData().get("time").toString()), doc.getData().get("tutorEmail").toString(),doc.getData().get("tuteeEmail").toString());
+                    r.setStatus(doc.getData().get("status").toString());
+                    groups.add(r);
                 }
                 adapter.notifyDataSetChanged();
             }
