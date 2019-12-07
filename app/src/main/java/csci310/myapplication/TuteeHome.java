@@ -22,6 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -78,6 +81,20 @@ public class TuteeHome extends AppCompatActivity {
         });
         adapter = new RequestAdapter(getApplicationContext(), 0, groups);
         list.setAdapter(adapter);
+        requestRefe.whereEqualTo("tutee", tuteeInfo.getUsername()).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    System.err.println("Listen failed:" + e);
+                    return;
+                }
+                groups.clear();
+                for(DocumentSnapshot doc: queryDocumentSnapshots){
+                    groups.add( new Request(doc.getData().get("tutee").toString(),doc.getData().get("tutor").toString(),doc.getData().get("subject").toString(),Integer.parseInt(doc.getData().get("dayOfWeek").toString()),Integer.parseInt(doc.getData().get("time").toString()), doc.getData().get("tutorEmail").toString(),doc.getData().get("tuteeEmail").toString()));
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
