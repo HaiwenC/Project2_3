@@ -51,7 +51,7 @@ public class SessionHistory extends AppCompatActivity {
         //            @Override
         //            public void onClick(View view) {
         Query query;
-        if(MainActivity.tutee==true){
+        if(MainActivity.tuteeInfo!=null){
             query = sessionRefe.whereEqualTo("tutee", MainActivity.tuteeInfo.getUsername());
         }
         else{

@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(getApplicationContext(),TuteeHome.class);
             }
             else{
+                tutee = false;
                 tutorInfo = (Tutor)student;
                 i = new Intent(getApplicationContext(),TutorHome.class);
             }
